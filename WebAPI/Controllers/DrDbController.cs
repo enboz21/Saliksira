@@ -14,10 +14,10 @@ namespace WebAPI.Controllers
 
         }
         [HttpGet]
-        public List<Doktorlar> GetDocks()
+        public async Task<List<Doktorlar>> GetDocks()
         {
 
-            List<Doktorlar> dr=new DrBus().GetAllDoctors();
+            List<Doktorlar> dr=await new DrBus().GetAllDoctors();
             return dr;
 
            /* String a = string.Empty;
@@ -30,10 +30,10 @@ namespace WebAPI.Controllers
             return a;*/
         }
         [HttpGet("{id}")]
-        public IActionResult GetDocksId(int id)
+        public async Task<IActionResult> GetDocksId(int id)
         {
 
-            var D = new DrBus().GetDoctorById(id);
+            var D = await new DrBus().GetDoctorById(id);
 
             if (D != null)
             {

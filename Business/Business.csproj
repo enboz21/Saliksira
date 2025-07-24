@@ -12,5 +12,8 @@
   <ItemGroup>
     <ProjectReference Include="..\DataAccsess\DataAccsess.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
   
 </Project>

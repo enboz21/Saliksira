@@ -1,6 +1,5 @@
 using Business;
 using DataAccsess;
-using Entity;
 using Newtonsoft.Json;
 using System.Numerics;
 using System.Threading.Tasks;

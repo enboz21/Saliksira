@@ -17,22 +17,22 @@ namespace DataAccsess
             _con = context;
         }
 
-        public List<Doktorlar> GetAll()
+        public async Task<List<Doktorlar>> GetAll()
         {
-            return _con.Doktorlars.ToListAsync().Result;
+            return await _con.Doktorlars.ToListAsync();
         }
 
-        public Doktorlar GetById(int Id)
+        public async Task<Doktorlar> GetById(int Id)
         {
-            return _con.Doktorlars.FindAsync(Id).Result;
+            return await _con.Doktorlars.FindAsync(Id);
         }
 
-        public void Save(Doktorlar Data)
+        public async Task Save(Doktorlar Data)
         {
             if (Data == null)
                 throw new ArgumentNullException(nameof(Data));
-            _con.Doktorlars.AddAsync(Data);
-            _con.SaveChangesAsync();
+            await _con.Doktorlars.AddAsync(Data);
+            await _con.SaveChangesAsync();
         }
         /*public async Task Save(Doktorlar Data)
 {
@@ -86,14 +86,14 @@ public async Task<Doktorlar> GetById(int Id)
             _drSet.Save(data);
         }
 
-        public List<Doktorlar> GetAllDoctors()
+        public async Task<List<Doktorlar>> GetAllDoctors()
         {
-             return _drSet.GetAll();
+             return await _drSet.GetAll();
             
         }
-        public Doktorlar GetDoctorById(int id)
+        public async Task<Doktorlar> GetDoctorById(int id)
         {
-            return _drSet.GetById(id);
+            return await _drSet.GetById(id);
         }
 
 

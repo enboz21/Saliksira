@@ -1,5 +1,6 @@
 ﻿using Entity;
 using DataAccsess;
+using System.Threading.Tasks;
 
 namespace Business
 {
@@ -33,14 +34,14 @@ namespace Business
             _drS.AddDoctor(data);
         }
 
-        public List<Doktorlar> GetAllDoctors()
+        public async Task<List<Doktorlar>> GetAllDoctors()
         {
-            return _drS.GetAllDoctors();
+            return await _drS.GetAllDoctors();
         }
 
-        public Doktorlar GetDoctorById(int id)
+        public async Task<Doktorlar> GetDoctorById(int id)
         {
-            Doktorlar doctor = _drS.GetDoctorById(id);
+            Doktorlar doctor = await _drS.GetDoctorById(id);
 
             if (doctor != null)
             {

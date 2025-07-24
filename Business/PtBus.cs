@@ -1,10 +1,5 @@
 ﻿using DataAccsess;
 using Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business
 {
@@ -22,9 +17,9 @@ namespace Business
             _ptS = new PatientsService(_ptCreat, _ptSet);
         }
 
-        public void AddPt(string name, string Lname, string TC, DateOnly dob, string gender, string ph, string adress, bool foreign)
+        public void AddPt(string name, string Lname, string TC, DateOnly dob, string gender, string ph, string adress)
         {
-            _ptS.AddPatient(name, Lname, TC, dob, gender, ph, adress, foreign);
+            _ptS.AddPatient(name, Lname, TC, dob, gender, ph, adress);
         }
 
         public void AddPt(Hastalar data)
@@ -32,14 +27,14 @@ namespace Business
             _ptS.AddPatient(data);
         }
 
-        public List<Hastalar> GetAllPts()
+        public async Task<List<Hastalar>> GetAllPts()
         {
-            return _ptS.GetAllPatients();
+            return await _ptS.GetAllPatients();
         }
 
-        public Hastalar GetPtById(int id)
+        public async Task<Hastalar> GetPtById(int id)
         {
-            Hastalar pt = _ptS.GetPatientById(id);
+            Hastalar pt =  await _ptS.GetPatientById(id);
 
             if (pt != null)
             {
@@ -47,35 +42,6 @@ namespace Business
             }
             throw new ArgumentNullException(nameof(pt), "Doctor not found");
         }
-
-
-
-        /*public async Task AddPt(string name, string Lname, string TC, DateOnly dob, string gender, string ph, string adress, bool foreign)
-        {
-            await _ptS.AddPatient(name, Lname, TC, dob, gender, ph, adress, foreign);
-        }
-
-        public async Task AddPt(Hastalar data)
-        {
-            await _ptS.AddPatient(data);
-        }
-
-        public Task<List<Hastalar>> GetAllPts()
-        {
-            return _ptS.GetAllPatients();
-        }
-
-        public async Task<Hastalar> GetPtById(int id)
-        {
-            Task<Hastalar> pt = _ptS.GetPatientById(id);
-
-            if (pt != null)
-            {
-                return await pt;
-            }
-            throw new ArgumentNullException(nameof(pt), "Doctor not found");
-
-        }*/
 
 
     }

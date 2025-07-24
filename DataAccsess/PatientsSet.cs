@@ -14,22 +14,22 @@ namespace DataAccsess
             _con = context;
         }
 
-        public List<Hastalar> GetAll()
+        public async Task<List<Hastalar>> GetAll()
         {
-            return _con.Hastalars.ToListAsync().Result;
+            return await _con.Hastalars.ToListAsync();
         }
 
-        public Hastalar GetById(int Id)
+        public async Task<Hastalar> GetById(int Id)
         {
-            return _con.Hastalars.FindAsync(Id).Result;
+            return await _con.Hastalars.FindAsync(Id);
         }
 
-        public void Save(Hastalar Data)
+        public async Task Save(Hastalar Data)
         {
             if (Data == null)
                 throw new ArgumentNullException(nameof(Data));
-             _con.Hastalars.AddAsync(Data);
-             _con.SaveChangesAsync();
+             await _con.Hastalars.AddAsync(Data);
+             await _con.SaveChangesAsync();
         }
 
         /*public  async Task<List<Hastalar>> GetAll()
@@ -52,7 +52,7 @@ namespace DataAccsess
     }
     public class patientsCreat
     {
-        public Hastalar creat(String name, String Lname, String TC, DateOnly dob, String gender, String ph, String adress, bool foreign)
+        public Hastalar creat(String name, String Lname, String TC, DateOnly dob, String gender, String ph, String adress)
         {
             return new Hastalar()
             {
@@ -63,7 +63,6 @@ namespace DataAccsess
                 Cinsiyet = gender,
                 TelefonNumarasi = ph,
                 Adres = adress,
-                YabanciMi = foreign
             };
         }
     }
@@ -76,9 +75,9 @@ namespace DataAccsess
             _patientsCreat = patientsCreat;
             _patientsSet = patientsSet;
         }
-        public void AddPatient(String name, String Lname, String TC, DateOnly dob, String gender, String ph, String adress, bool foreign)
+        public void AddPatient(String name, String Lname, String TC, DateOnly dob, String gender, String ph, String adress)
         {
-            var patient = _patientsCreat.creat(name, Lname, TC, dob, gender, ph, adress, foreign);
+            var patient = _patientsCreat.creat(name, Lname, TC, dob, gender, ph, adress);
              _patientsSet.Save(patient);
         }
         public void AddPatient(Hastalar data)
@@ -86,13 +85,13 @@ namespace DataAccsess
              _patientsSet.Save(data);
         }
 
-        public List<Hastalar> GetAllPatients()
+        public async Task<List<Hastalar>> GetAllPatients()
         {
-            return _patientsSet.GetAll();
+            return await _patientsSet.GetAll();
         }
-        public Hastalar GetPatientById(int id)
+        public async Task<Hastalar> GetPatientById(int id)
         {
-            return _patientsSet.GetById(id);
+            return  await _patientsSet.GetById(id);
         }
     }
 }

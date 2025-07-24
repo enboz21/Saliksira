@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccsess;
+namespace Entity;
 
 public partial class AContext : DbContext
 {
@@ -19,8 +18,6 @@ public partial class AContext : DbContext
     public virtual DbSet<Doktorlar> Doktorlars { get; set; }
 
     public virtual DbSet<Hastalar> Hastalars { get; set; }
-
-    public virtual DbSet<MuayeneKuyrugu> MuayeneKuyrugus { get; set; }
 
     public virtual DbSet<Randevular> Randevulars { get; set; }
 
@@ -61,40 +58,6 @@ public partial class AContext : DbContext
                 .HasMaxLength(11)
                 .HasColumnName("TCKimlikNo");
             entity.Property(e => e.TelefonNumarasi).HasMaxLength(15);
-            entity.Property(e => e.YabanciMi).HasDefaultValue(false);
-        });
-
-        modelBuilder.Entity<MuayeneKuyrugu>(entity =>
-        {
-            entity.HasKey(e => e.KuyrukId).HasName("PK__MuayeneK__B19741D98713CE96");
-
-            entity.ToTable("MuayeneKuyrugu");
-
-            entity.Property(e => e.KuyrukId).HasColumnName("KuyrukID");
-            entity.Property(e => e.CikisZamani).HasColumnType("datetime");
-            entity.Property(e => e.DoktorId).HasColumnName("DoktorID");
-            entity.Property(e => e.GirisZamani)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.HastaId).HasColumnName("HastaID");
-            entity.Property(e => e.KuyrukDurumu)
-                .HasMaxLength(20)
-                .HasDefaultValue("Bekliyor");
-            entity.Property(e => e.RandevuId).HasColumnName("RandevuID");
-
-            entity.HasOne(d => d.Doktor).WithMany(p => p.MuayeneKuyrugus)
-                .HasForeignKey(d => d.DoktorId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_MuayeneKuyrugu_Doktorlar");
-
-            entity.HasOne(d => d.Hasta).WithMany(p => p.MuayeneKuyrugus)
-                .HasForeignKey(d => d.HastaId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_MuayeneKuyrugu_Hastalar");
-
-            entity.HasOne(d => d.Randevu).WithMany(p => p.MuayeneKuyrugus)
-                .HasForeignKey(d => d.RandevuId)
-                .HasConstraintName("FK_MuayeneKuyrugu_Randevular");
         });
 
         modelBuilder.Entity<Randevular>(entity =>
@@ -106,12 +69,7 @@ public partial class AContext : DbContext
             entity.Property(e => e.RandevuId).HasColumnName("RandevuID");
             entity.Property(e => e.DoktorId).HasColumnName("DoktorID");
             entity.Property(e => e.HastaId).HasColumnName("HastaID");
-            entity.Property(e => e.KayitTarihi)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.RandevuDurumu)
-                .HasMaxLength(20)
-                .HasDefaultValue("Bekliyor");
+            entity.Property(e => e.RandevuDurumu).HasDefaultValueSql("('Bekliyor')");
 
             entity.HasOne(d => d.Doktor).WithMany(p => p.Randevulars)
                 .HasForeignKey(d => d.DoktorId)
@@ -120,7 +78,6 @@ public partial class AContext : DbContext
 
             entity.HasOne(d => d.Hasta).WithMany(p => p.Randevulars)
                 .HasForeignKey(d => d.HastaId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Randevular_Hastalar");
         });
 

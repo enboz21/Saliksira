@@ -17,7 +17,5 @@ public partial class Doktorlar
 
     public bool? AktifMi { get; set; }
 
-    public virtual ICollection<MuayeneKuyrugu> MuayeneKuyrugus { get; set; } = new List<MuayeneKuyrugu>();
-
     public virtual ICollection<Randevular> Randevulars { get; set; } = new List<Randevular>();
 }

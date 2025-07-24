@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Identity.Client;
+using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
@@ -19,19 +20,19 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public List<Hastalar> GetPts()
+        public async Task<List<Hastalar>> GetPts()
         {
 
-            List<Hastalar> pts = new PtBus().GetAllPts();
+            List<Hastalar> pts = await new PtBus().GetAllPts();
             return pts;
 
         }
         
 
         [HttpGet("{id}")]
-        public IActionResult getPtsId(int id)
+        public async Task<IActionResult> getPtsId(int id)
         {
-            var H= new PtBus().GetPtById(id);
+            var H= await new PtBus().GetPtById(id);
 
             if (H != null)
             {

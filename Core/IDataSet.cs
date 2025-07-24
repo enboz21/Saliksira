@@ -8,8 +8,8 @@ namespace DataAccsess
 {
     public interface IDataSet<T> where T : class
     {
-        void Save(T Data);
-        T GetById(int Id);
-        List<T> GetAll();
+        Task Save(T Data);
+        Task<T> GetById(int Id);
+        Task<List<T>> GetAll();
     }
 }
