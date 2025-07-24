@@ -1,7 +1,9 @@
 ﻿using Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,13 +16,40 @@ namespace DataAccsess
         {
             _con = context;
         }
-        public async Task Save(Doktorlar Data)
+
+        public List<Doktorlar> GetAll()
+        {
+            return _con.Doktorlars.ToListAsync().Result;
+        }
+
+        public Doktorlar GetById(int Id)
+        {
+            return _con.Doktorlars.FindAsync(Id).Result;
+        }
+
+        public void Save(Doktorlar Data)
         {
             if (Data == null)
                 throw new ArgumentNullException(nameof(Data));
-            await _con.Doktorlars.AddAsync(Data);
-            await _con.SaveChangesAsync();
+            _con.Doktorlars.AddAsync(Data);
+            _con.SaveChangesAsync();
         }
+        /*public async Task Save(Doktorlar Data)
+{
+   if (Data == null)
+       throw new ArgumentNullException(nameof(Data));
+   await _con.Doktorlars.AddAsync(Data);
+   await _con.SaveChangesAsync();
+}
+public async Task<List<Doktorlar>> GetAll()
+{
+   return await _con.Doktorlars.ToListAsync();
+}
+public async Task<Doktorlar> GetById(int Id)
+{
+
+   return await _con.Doktorlars.FindAsync(Id);
+}*/
     }
 
     public class  DrCreat
@@ -47,11 +76,27 @@ namespace DataAccsess
             _drCreat = drCreat;
             _drSet = drSet;
         }
-        public async Task AddDoctor(String name, String Lname, String expertise, String ph, bool active)
+        public void AddDoctor(String name, String Lname, String expertise, String ph, bool active)
         {
             var doctor = _drCreat.creat(name, Lname, expertise, ph, active);
-            await _drSet.Save(doctor);
+            _drSet.Save(doctor);
         }
+        public void AddDoctor(Doktorlar data)
+        {
+            _drSet.Save(data);
+        }
+
+        public List<Doktorlar> GetAllDoctors()
+        {
+             return _drSet.GetAll();
+            
+        }
+        public Doktorlar GetDoctorById(int id)
+        {
+            return _drSet.GetById(id);
+        }
+
+
     }
 
 }
