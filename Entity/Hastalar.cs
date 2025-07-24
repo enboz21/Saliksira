@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Entity;
+namespace test;
 
 public partial class Hastalar
 {

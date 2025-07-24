@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Entity;
+namespace test;
 
 public partial class Randevular
 {
@@ -16,4 +16,6 @@ public partial class Randevular
     public virtual Doktorlar Doktor { get; set; } = null!;
 
     public virtual Hastalar? Hasta { get; set; }
+
+    public virtual Durum RandevuDurumuNavigation { get; set; } = null!;
 }

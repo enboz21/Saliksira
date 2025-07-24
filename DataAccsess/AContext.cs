@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Entity;
+namespace test;
 
 public partial class AContext : DbContext
 {
@@ -16,6 +16,8 @@ public partial class AContext : DbContext
     }
 
     public virtual DbSet<Doktorlar> Doktorlars { get; set; }
+
+    public virtual DbSet<Durum> Durums { get; set; }
 
     public virtual DbSet<Hastalar> Hastalars { get; set; }
 
@@ -39,6 +41,21 @@ public partial class AContext : DbContext
             entity.Property(e => e.Soyad).HasMaxLength(50);
             entity.Property(e => e.TelefonNumarasi).HasMaxLength(15);
             entity.Property(e => e.UzmanlikAlani).HasMaxLength(100);
+        });
+
+        modelBuilder.Entity<Durum>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK_durum");
+
+            entity.ToTable("Durum");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedOnAdd()
+                .HasColumnName("id");
+            entity.Property(e => e.Durum1)
+                .HasMaxLength(15)
+                .IsFixedLength()
+                .HasColumnName("Durum");
         });
 
         modelBuilder.Entity<Hastalar>(entity =>
@@ -79,6 +96,11 @@ public partial class AContext : DbContext
             entity.HasOne(d => d.Hasta).WithMany(p => p.Randevulars)
                 .HasForeignKey(d => d.HastaId)
                 .HasConstraintName("FK_Randevular_Hastalar");
+
+            entity.HasOne(d => d.RandevuDurumuNavigation).WithMany(p => p.Randevulars)
+                .HasForeignKey(d => d.RandevuDurumu)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Siparisler_Musteriler");
         });
 
         OnModelCreatingPartial(modelBuilder);
