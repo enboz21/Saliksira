@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace test;
+namespace Entity;
 
 public partial class Durum
 {

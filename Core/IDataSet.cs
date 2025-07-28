@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataAccsess
+﻿namespace DataAccsess
 {
     public interface IDataSet<T> where T : class
     {
-        Task Save(T Data);
-        Task<T> GetById(int Id);
+        Task Delete(int Id);
+
         Task<List<T>> GetAll();
+
+        Task<T> GetById(int Id);
+
+        Task<List<T>> GetByName(string Name);
+
+        Task<T> Save(T Data);
     }
 }

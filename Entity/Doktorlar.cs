@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace test;
+namespace Entity;
 
 public partial class Doktorlar
 {
-    public int DoktorId { get; set; }
+    public int Id { get; set; }
 
-    public string Ad { get; set; } = null!;
+    public string Name { get; set; } = null!;
 
     public string Soyad { get; set; } = null!;
 
