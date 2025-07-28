@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore; // ToListAsync ve Include için
 using DataAccsess; // AContext için
 using Entity.DTOs; // RandevuBasitRaporDto için
-using Entity; // Randevular, Doktorlar, Hastalar, Durum için
+using Entity;
+using Core; // Randevular, Doktorlar, Hastalar, Durum için
 
 namespace Business
 {
-    public class apreservice
+    public class apreservice : IEdit<ApDto>
     {
         private readonly AContext _context;
 

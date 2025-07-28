@@ -1,11 +1,13 @@
-﻿using Business;
-using DataAccsess;
-using Entity;
+﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Threading.Tasks;
+using DataAccsess;
+using Entity;
+using Business;
+using Core;
 
 namespace WebAPI.Controllers
 {
@@ -14,12 +16,12 @@ namespace WebAPI.Controllers
     public class DrController : ControllerBase
     {
         static AContext c = new AContext();
-
+        DrEdit DrEdit = new DrEdit(c);
         DataService<Doktorlar> Dts = new DataService<Doktorlar>(new DataBaseAc<Doktorlar>(c));
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await Dts.GetAllService());
+            return Ok(await DrEdit.GetAllAp());
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)

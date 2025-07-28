@@ -3,7 +3,7 @@ using DataAccsess;
 using Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Core;
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]

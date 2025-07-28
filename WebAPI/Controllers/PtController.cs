@@ -11,12 +11,12 @@ namespace WebAPI.Controllers
     public class PtController : ControllerBase
     {
         static AContext c = new AContext();
-
+        PtEdit PtEdit = new PtEdit(c);
         DataService<Hastalar> Pts = new DataService<Hastalar>(new DataBaseAc<Hastalar>(c));
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await Pts.GetAllService());
+            return Ok(await PtEdit.GetAllAp());
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)

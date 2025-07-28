@@ -7,10 +7,13 @@ namespace Business
     public class DataService<T> : IDataSer<T> where T : class
     {
         private readonly IDataSet<T> _dataBaseAc;
+        private DataBaseAc<Doktorlar> dataBaseAc;
+
         public DataService(IDataSet<T> dataBaseAc)
         {
             _dataBaseAc = dataBaseAc;
         }
+
 
         public Task DeleteService(int Id)
         {
@@ -23,6 +26,8 @@ namespace Business
 
            return await _dataBaseAc.GetAll();
         }
+
+        
 
         public async Task<T> GetByIdService(int Id)
         {
