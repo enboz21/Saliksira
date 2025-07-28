@@ -12,6 +12,7 @@ namespace WebAPI.Controllers
     {
         static AContext c = new AContext();
         SiService _siService = new SiService(new DataBaseAc<Randevular>(c));
+        DataService<Randevular> Mts = new DataService<Randevular>(new DataBaseAc<Randevular>(c));
 
         [HttpGet]
         public async Task<IActionResult> Get()
@@ -34,6 +35,12 @@ namespace WebAPI.Controllers
                 return StatusCode(500, $"Sunucu hatası oluştu: {ex.Message}");
             }
         }
+
+        /*[HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            return Ok(await Mts.GetAllService());
+        }*/
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] RandevuOlusturDto randevuDto)

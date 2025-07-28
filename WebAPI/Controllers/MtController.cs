@@ -12,7 +12,7 @@ namespace WebAPI.Controllers
     {
         static AContext c = new AContext();
 
-        DataService<Randevular> Mts = new DataService<Randevular>(new DataBaseAc<Randevular>(c));
+        DataService<Durum> Mts = new DataService<Durum>(new DataBaseAc<Durum>(c));
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -29,13 +29,13 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Randevular Mt)
+        public async Task<IActionResult> Post([FromBody] Durum Mt)
         {
             if (Mt == null)
             {
                 return BadRequest("Invalid data.");
             }
-            Randevular A = await Mts.SaveService(Mt);
+            Durum A = await Mts.SaveService(Mt);
             return CreatedAtAction("Get", new { id = A.Id }, A);
         }
         [HttpDelete("{id}")]

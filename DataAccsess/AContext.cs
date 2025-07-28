@@ -66,7 +66,9 @@ public partial class AContext : DbContext
 
             entity.ToTable("Hastalar");
 
-            entity.HasIndex(e => e.TckimlikNo, "UQ__Hastalar__7E1935ED71914883").IsUnique();
+            entity.HasIndex(e => e.TckimlikNo, "UQ__Hastalar__7E1935ED71914883")
+                .IsUnique()
+                .HasFilter("([TCKimlikNo] IS NOT NULL)");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Adres).HasMaxLength(250);
@@ -83,14 +85,9 @@ public partial class AContext : DbContext
 
         modelBuilder.Entity<Randevular>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Randevul__B795F36B0562B46E");
+            entity.HasKey(e => e.Id).HasName("PK__Randevul__3214EC07748D76A8");
 
             entity.ToTable("Randevular");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.DoktorId).HasColumnName("DoktorID");
-            entity.Property(e => e.HastaId).HasColumnName("HastaID");
-            entity.Property(e => e.RandevuDurumu).HasDefaultValueSql("('Bekliyor')");
 
             entity.HasOne(d => d.Doktor).WithMany(p => p.Randevulars)
                 .HasForeignKey(d => d.DoktorId)
@@ -104,7 +101,7 @@ public partial class AContext : DbContext
             entity.HasOne(d => d.RandevuDurumuNavigation).WithMany(p => p.Randevulars)
                 .HasForeignKey(d => d.RandevuDurumu)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Siparisler_Musteriler");
+                .HasConstraintName("FK_Randevular_Durum");
         });
 
         OnModelCreatingPartial(modelBuilder);
