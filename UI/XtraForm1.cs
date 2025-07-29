@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Entity;
 using Newtonsoft.Json;
 using Entity.DTOs;
+using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
 
 namespace UI
 {
@@ -21,15 +22,97 @@ namespace UI
         public XtraForm1()
         {
             InitializeComponent();
+            TableRefresh("Pt", false);
+            TableRefresh("Dr", false);
         }
 
         private async void DrRefresh_Click(object sender, EventArgs e)
         {
 
 
+            TableRefresh("Dr", true);
+        }
+
+        private async void hastalar_Click(object sender, EventArgs e)
+        {
+            TableRefresh("Pt", true);
+        }
+
+        private void Drce_Click(object sender, EventArgs e)
+        {
+            using (DrCE drce = new DrCE()) 
+            {
+                drce.ShowDialog();
+            }
+        }
+
+        private void RightGridControl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DrD_Click(object sender, EventArgs e)
+        {
+            Delete("Dr");
+        }
+
+        private async void Delete(String a)
+        {
+            object selectedRow;
+            if (a.Equals("Dr"))
+            {
+               selectedRow = gridView1.GetFocusedRowCellValue("Id");
+            }
+            else if (a.Equals("Pt"))
+            {
+                selectedRow = gridView2.GetFocusedRowCellValue("Id");
+            }
+            else
+            {
+                MessageBox.Show("Hatalı işlem", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (selectedRow != null)
+            {
+                int id = Convert.ToInt32(selectedRow);
+                var d = MessageBox.Show($"Seçilen ID: {id} \n eminmisiniz", "Silme", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (d == DialogResult.Yes)
+                {
+                    using (HttpClient client = new())
+                    {
+                        String apiUrl = baseUrl + a + "/" + id;
+                        try
+                        {
+                            HttpResponseMessage response = await client.DeleteAsync(apiUrl);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                MessageBox.Show("Silme işlemi başarılı!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                TableRefresh(a, false);
+                            }
+                            else
+                            {
+                                // API'den başarısız bir cevap gelirse hata mesajını göster
+                                string errorContent = await response.Content.ReadAsStringAsync();
+                                MessageBox.Show($"Silme işlemi sırasında bir hata oluştu. Durum Kodu: {response.StatusCode}\nMesaj: {errorContent}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+                        }
+                        catch (HttpRequestException ex)
+                        {
+                            // Ağ bağlantısı veya API'ye ulaşılamaması gibi hataları yakala
+                            MessageBox.Show($"API'ye bağlanırken bir hata oluştu: {ex.Message}\nLütfen Web API'nizin çalıştığından emin olun.", "Bağlantı Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private async void TableRefresh(String a, bool box)
+        {
             using (HttpClient client = new HttpClient())
             {
-                string apiUrl = baseUrl + "Dr";
+                string apiUrl = baseUrl + a;
                 try
                 {
                     HttpResponseMessage response = await client.GetAsync(apiUrl);
@@ -37,18 +120,29 @@ namespace UI
                     if (response.IsSuccessStatusCode)
                     {
                         string jsonResponse = await response.Content.ReadAsStringAsync();
+                        if (a.Equals("Dr"))
+                        {
+                            // Doktor verilerini deserialize et ve grid'e ata
+                            List<DrDTO> doktorListesi = JsonConvert.DeserializeObject<List<DrDTO>>(jsonResponse);
+                            LeftGridControl.DataSource = doktorListesi;
+                        }
+                        else if (a.Equals("Pt"))
+                        {
+                            // Hasta verilerini deserialize et ve grid'e ata
+                            List<PtDTO> HAS = JsonConvert.DeserializeObject<List<PtDTO>>(jsonResponse);
+                            RightGridControl.DataSource = HAS;
+                        }
+                        if (box)
+                        {
+                            MessageBox.Show("Başarıyla Yüklendi!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
 
-
-                        List<DrDTO> doktorListesi = JsonConvert.DeserializeObject<List<DrDTO>>(jsonResponse);
-                        gridControl1.DataSource = doktorListesi;
-
-                        MessageBox.Show("Doktorlar Başarıyla Yüklendi!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
                         // API'den başarısız bir cevap gelirse hata mesajını göster
                         string errorContent = await response.Content.ReadAsStringAsync();
-                        MessageBox.Show($"Doktorlar yüklenirken bir hata oluştu. Durum Kodu: {response.StatusCode}\nMesaj: {errorContent}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"yüklenirken bir hata oluştu. Durum Kodu: {response.StatusCode}\nMesaj: {errorContent}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (HttpRequestException ex)
@@ -60,39 +154,22 @@ namespace UI
             }
         }
 
-        private async void hastalar_Click(object sender, EventArgs e)
+        private void PtD_Click(object sender, EventArgs e)
         {
-            using (HttpClient client = new HttpClient())
+            Delete("Pt");
+        }
+
+        private void Ptce_Click(object sender, EventArgs e)
+        {
+            using (PtCE ptce = new PtCE())
             {
-                string apiUrl = baseUrl + "Pt";
-                try
-                {
-                    HttpResponseMessage response = await client.GetAsync(apiUrl);
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string jsonResponse = await response.Content.ReadAsStringAsync();
-
-
-                        List<PtDTO> doktorListesi = JsonConvert.DeserializeObject<List<PtDTO>>(jsonResponse);
-                        gridControl2.DataSource = doktorListesi;
-
-                        MessageBox.Show("Doktorlar Başarıyla Yüklendi!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        // API'den başarısız bir cevap gelirse hata mesajını göster
-                        string errorContent = await response.Content.ReadAsStringAsync();
-                        MessageBox.Show($"Doktorlar yüklenirken bir hata oluştu. Durum Kodu: {response.StatusCode}\nMesaj: {errorContent}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                catch (HttpRequestException ex)
-                {
-                    // Ağ bağlantısı veya API'ye ulaşılamaması gibi hataları yakala
-                    MessageBox.Show($"API'ye bağlanırken bir hata oluştu: {ex.Message}\nLütfen Web API'nizin çalıştığından emin olun.", "Bağlantı Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
+                ptce.ShowDialog();
             }
+        }
+
+        private void XtraForm1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

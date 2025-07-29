@@ -29,114 +29,234 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraForm1));
-            gridControl1 = new DevExpress.XtraGrid.GridControl();
-            gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            DrRefresh = new DevExpress.XtraEditors.SimpleButton();
-            stackPanel1 = new DevExpress.Utils.Layout.StackPanel();
-            gridControl2 = new DevExpress.XtraGrid.GridControl();
-            gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
+            Ptce = new DevExpress.XtraEditors.SimpleButton();
+            PtD = new DevExpress.XtraEditors.SimpleButton();
+            DrD = new DevExpress.XtraEditors.SimpleButton();
+            Drce = new DevExpress.XtraEditors.SimpleButton();
             hastalar = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
+            DrRefresh = new DevExpress.XtraEditors.SimpleButton();
+            splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            LeftGridControl = new DevExpress.XtraGrid.GridControl();
+            gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            RightGridControl = new DevExpress.XtraGrid.GridControl();
+            gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            ((System.ComponentModel.ISupportInitialize)splitContainerControl2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainerControl2.Panel1).BeginInit();
+            splitContainerControl2.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainerControl2.Panel2).BeginInit();
+            splitContainerControl2.Panel2.SuspendLayout();
+            splitContainerControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainerControl1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainerControl1.Panel1).BeginInit();
+            splitContainerControl1.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainerControl1.Panel2).BeginInit();
+            splitContainerControl1.Panel2.SuspendLayout();
+            splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)LeftGridControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)stackPanel1).BeginInit();
-            stackPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)gridControl2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)RightGridControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView2).BeginInit();
             SuspendLayout();
             // 
-            // gridControl1
+            // splitContainerControl2
             // 
-            gridControl1.Location = new Point(15, 2);
-            gridControl1.MainView = gridView1;
-            gridControl1.Name = "gridControl1";
-            gridControl1.Size = new Size(494, 262);
-            gridControl1.TabIndex = 1;
-            gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
+            splitContainerControl2.Dock = DockStyle.Fill;
+            splitContainerControl2.Horizontal = false;
+            splitContainerControl2.Location = new Point(0, 0);
+            splitContainerControl2.Name = "splitContainerControl2";
             // 
-            // gridView1
+            // splitContainerControl2.Panel1
             // 
-            gridView1.GridControl = gridControl1;
-            gridView1.Name = "gridView1";
-            gridView1.OptionsView.ShowGroupPanel = false;
+            splitContainerControl2.Panel1.Controls.Add(Ptce);
+            splitContainerControl2.Panel1.Controls.Add(PtD);
+            splitContainerControl2.Panel1.Controls.Add(DrD);
+            splitContainerControl2.Panel1.Controls.Add(Drce);
+            splitContainerControl2.Panel1.Controls.Add(hastalar);
+            splitContainerControl2.Panel1.Controls.Add(DrRefresh);
+            splitContainerControl2.Panel1.Text = "Panel1";
             // 
-            // DrRefresh
+            // splitContainerControl2.Panel2
             // 
-            DrRefresh.ImageOptions.Image = (Image)resources.GetObject("DrRefresh.ImageOptions.Image");
-            DrRefresh.Location = new Point(15, 284);
-            DrRefresh.Name = "DrRefresh";
-            DrRefresh.Size = new Size(118, 36);
-            DrRefresh.TabIndex = 0;
-            DrRefresh.Text = "Doktorlar";
-            DrRefresh.Click += DrRefresh_Click;
+            splitContainerControl2.Panel2.Controls.Add(splitContainerControl1);
+            splitContainerControl2.Panel2.Text = "Panel2";
+            splitContainerControl2.Size = new Size(1199, 592);
+            splitContainerControl2.SplitterPosition = 332;
+            splitContainerControl2.TabIndex = 5;
             // 
-            // stackPanel1
+            // Ptce
             // 
-            stackPanel1.AutoScroll = true;
-            stackPanel1.AutoSize = true;
-            stackPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            stackPanel1.Controls.Add(gridControl1);
-            stackPanel1.Controls.Add(gridControl2);
-            stackPanel1.Dock = DockStyle.Bottom;
-            stackPanel1.Location = new Point(0, 326);
-            stackPanel1.Name = "stackPanel1";
-            stackPanel1.Size = new Size(985, 266);
-            stackPanel1.TabIndex = 2;
-            stackPanel1.UseSkinIndents = true;
+            Ptce.ImageOptions.Image = (Image)resources.GetObject("Ptce.ImageOptions.Image");
+            Ptce.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            Ptce.ImageOptions.ImageUri.Uri = "Add";
+            Ptce.Location = new Point(1038, 257);
+            Ptce.Name = "Ptce";
+            Ptce.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            Ptce.Size = new Size(71, 64);
+            Ptce.TabIndex = 11;
+            Ptce.Text = "Hasta Ekle";
+            Ptce.Click += Ptce_Click;
             // 
-            // gridControl2
+            // PtD
             // 
-            gridControl2.Location = new Point(513, 2);
-            gridControl2.MainView = gridView2;
-            gridControl2.Name = "gridControl2";
-            gridControl2.Size = new Size(460, 262);
-            gridControl2.TabIndex = 2;
-            gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView2 });
+            PtD.ImageOptions.Image = (Image)resources.GetObject("PtD.ImageOptions.Image");
+            PtD.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            PtD.ImageOptions.ImageUri.Uri = "Add";
+            PtD.Location = new Point(961, 257);
+            PtD.Name = "PtD";
+            PtD.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            PtD.Size = new Size(71, 64);
+            PtD.TabIndex = 10;
+            PtD.Text = "Hasta Sil";
+            PtD.Click += PtD_Click;
             // 
-            // gridView2
+            // DrD
             // 
-            gridView2.GridControl = gridControl2;
-            gridView2.Name = "gridView2";
-            gridView2.OptionsView.ShowGroupPanel = false;
+            DrD.ImageOptions.Image = (Image)resources.GetObject("DrD.ImageOptions.Image");
+            DrD.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            DrD.ImageOptions.ImageUri.Uri = "Add";
+            DrD.Location = new Point(147, 262);
+            DrD.Name = "DrD";
+            DrD.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            DrD.Size = new Size(71, 64);
+            DrD.TabIndex = 9;
+            DrD.Text = "Doktor Sil";
+            DrD.Click += DrD_Click;
+            // 
+            // Drce
+            // 
+            Drce.ImageOptions.Image = (Image)resources.GetObject("Drce.ImageOptions.Image");
+            Drce.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            Drce.ImageOptions.ImageUri.Uri = "Add";
+            Drce.Location = new Point(70, 262);
+            Drce.Name = "Drce";
+            Drce.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            Drce.Size = new Size(71, 64);
+            Drce.TabIndex = 8;
+            Drce.Text = "Doktor Ekle";
+            Drce.Click += Drce_Click;
             // 
             // hastalar
             // 
             hastalar.ImageOptions.Image = (Image)resources.GetObject("hastalar.ImageOptions.Image");
-            hastalar.Location = new Point(855, 284);
+            hastalar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            hastalar.Location = new Point(1115, 257);
             hastalar.Name = "hastalar";
-            hastalar.Size = new Size(118, 36);
-            hastalar.TabIndex = 3;
+            hastalar.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            hastalar.Size = new Size(71, 64);
+            hastalar.TabIndex = 7;
             hastalar.Text = "hastalar";
             hastalar.Click += hastalar_Click;
+            // 
+            // DrRefresh
+            // 
+            DrRefresh.ImageOptions.Image = (Image)resources.GetObject("DrRefresh.ImageOptions.Image");
+            DrRefresh.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            DrRefresh.Location = new Point(3, 262);
+            DrRefresh.Name = "DrRefresh";
+            DrRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            DrRefresh.Size = new Size(61, 64);
+            DrRefresh.TabIndex = 6;
+            DrRefresh.Text = "Doktorlar";
+            DrRefresh.Click += DrRefresh_Click;
+            // 
+            // splitContainerControl1
+            // 
+            splitContainerControl1.Dock = DockStyle.Fill;
+            splitContainerControl1.Location = new Point(0, 0);
+            splitContainerControl1.Name = "splitContainerControl1";
+            // 
+            // splitContainerControl1.Panel1
+            // 
+            splitContainerControl1.Panel1.Controls.Add(LeftGridControl);
+            splitContainerControl1.Panel1.Text = "Panel1";
+            // 
+            // splitContainerControl1.Panel2
+            // 
+            splitContainerControl1.Panel2.Controls.Add(RightGridControl);
+            splitContainerControl1.Panel2.Text = "Panel2";
+            splitContainerControl1.Size = new Size(1199, 248);
+            splitContainerControl1.SplitterPosition = 575;
+            splitContainerControl1.TabIndex = 5;
+            // 
+            // LeftGridControl
+            // 
+            LeftGridControl.Dock = DockStyle.Fill;
+            LeftGridControl.Location = new Point(0, 0);
+            LeftGridControl.MainView = gridView1;
+            LeftGridControl.Name = "LeftGridControl";
+            LeftGridControl.Size = new Size(575, 248);
+            LeftGridControl.TabIndex = 0;
+            LeftGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
+            // 
+            // gridView1
+            // 
+            gridView1.GridControl = LeftGridControl;
+            gridView1.Name = "gridView1";
+            gridView1.OptionsBehavior.Editable = false;
+            gridView1.OptionsEditForm.ActionOnModifiedRowChange = DevExpress.XtraGrid.Views.Grid.EditFormModifiedAction.Cancel;
+            gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // RightGridControl
+            // 
+            RightGridControl.Dock = DockStyle.Fill;
+            RightGridControl.Location = new Point(0, 0);
+            RightGridControl.MainView = gridView2;
+            RightGridControl.Name = "RightGridControl";
+            RightGridControl.Size = new Size(612, 248);
+            RightGridControl.TabIndex = 1;
+            RightGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView2 });
+            RightGridControl.Click += RightGridControl_Click;
+            // 
+            // gridView2
+            // 
+            gridView2.GridControl = RightGridControl;
+            gridView2.Name = "gridView2";
+            gridView2.OptionsBehavior.Editable = false;
+            gridView2.OptionsView.ShowGroupPanel = false;
             // 
             // XtraForm1
             // 
             AutoScaleDimensions = new SizeF(7F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(985, 592);
-            Controls.Add(hastalar);
-            Controls.Add(stackPanel1);
-            Controls.Add(DrRefresh);
+            ClientSize = new Size(1199, 592);
+            Controls.Add(splitContainerControl2);
             Name = "XtraForm1";
             Text = "XtraForm1";
-            ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
+            FormClosed += XtraForm1_FormClosed;
+            ((System.ComponentModel.ISupportInitialize)splitContainerControl2.Panel1).EndInit();
+            splitContainerControl2.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerControl2.Panel2).EndInit();
+            splitContainerControl2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerControl2).EndInit();
+            splitContainerControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerControl1.Panel1).EndInit();
+            splitContainerControl1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerControl1.Panel2).EndInit();
+            splitContainerControl1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerControl1).EndInit();
+            splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)LeftGridControl).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)stackPanel1).EndInit();
-            stackPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)gridControl2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)RightGridControl).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView2).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private DevExpress.XtraEditors.SimpleButton DrRefresh;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraGrid.GridControl LeftGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.Utils.Layout.StackPanel stackPanel1;
-        private DevExpress.XtraGrid.GridControl gridControl2;
+        private DevExpress.XtraGrid.GridControl RightGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraEditors.SimpleButton hastalar;
+        private DevExpress.XtraEditors.SimpleButton DrRefresh;
+        private DevExpress.XtraEditors.SimpleButton Drce;
+        private DevExpress.XtraEditors.SimpleButton DrD;
+        private DevExpress.XtraEditors.SimpleButton PtD;
+        private DevExpress.XtraEditors.SimpleButton Ptce;
     }
 }

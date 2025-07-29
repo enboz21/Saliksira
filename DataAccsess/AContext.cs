@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Entity;
 using Microsoft.EntityFrameworkCore;
-
+using Entity;
 namespace DataAccsess;
 
 public partial class AContext : DbContext
@@ -73,7 +72,7 @@ public partial class AContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Adres).HasMaxLength(250);
-            entity.Property(e => e.Cinsiyet).HasMaxLength(10);
+            entity.Property(e => e.Cinsiyet).HasMaxLength(25);
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .HasColumnName("name");
