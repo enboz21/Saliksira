@@ -52,7 +52,7 @@ namespace Business
             return await _dataSet.GetByName(Name);
         }
 
-        public Task<List<Doktorlar>> GetByTcService(string Tc)
+        public Task<List<DrDTO>> GetByTcService(string Tc)
         {
             throw new NotImplementedException();
         }

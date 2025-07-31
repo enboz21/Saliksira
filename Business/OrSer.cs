@@ -46,7 +46,7 @@ namespace Business
             return await _dataSet.GetByName(Name);
         }
 
-        public Task<List<Randevular>> GetByTcService(string Tc)
+        public Task<List<OrDTO>> GetByTcService(string Tc)
         {
             throw new NotImplementedException();
         }

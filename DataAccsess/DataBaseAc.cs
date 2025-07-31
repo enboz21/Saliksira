@@ -63,7 +63,7 @@ namespace DataAccsess
         {
             return _context.Set<T>()
                 .Where(e => EF.Property<string>(e, "TckimlikNo") == Tc) // Assuming the entity has a Name property
-                .ToListAsync();
+                .Include("Doktor").ToListAsync();
         }
 
         public async Task<T> Save(T Data)

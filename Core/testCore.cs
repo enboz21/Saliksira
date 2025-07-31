@@ -13,6 +13,6 @@ namespace Core
         Task<List<T>> GetByNameService(string Name);
         Task<TT> SaveService(TT Data);
         Task DeleteService(int Id);
-        Task<List<T>> GetByTcService(String Tc);
+        Task<List<TT>> GetByTcService(String Tc);
     }
 }

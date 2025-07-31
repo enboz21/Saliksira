@@ -40,7 +40,7 @@ namespace UI
 
         private void Drce_Click(object sender, EventArgs e)
         {
-            using (DrCE drce = new DrCE()) 
+            using (DrCE drce = new DrCE())
             {
                 drce.ShowDialog();
             }
@@ -61,7 +61,7 @@ namespace UI
             object selectedRow;
             if (a.Equals("Dr"))
             {
-               selectedRow = gridView1.GetFocusedRowCellValue("Id");
+                selectedRow = gridView1.GetFocusedRowCellValue("Id");
             }
             else if (a.Equals("Pt"))
             {
@@ -170,6 +170,11 @@ namespace UI
         private void XtraForm1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void XtraForm1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

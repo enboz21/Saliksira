@@ -75,10 +75,28 @@ namespace Business
             return Data;
         }
 
-        public async Task<List<Hastalar>> GetByTcService(string Tc)
+        public async Task<List<PtDTO>> GetByTcService(string Tc)
         {
-            return await _dataSet.GetByTc(Tc);
+            var TMP = await _dataSet.GetByTc(Tc);
 
+            List<PtDTO> query = TMP
+                .Select(p => new PtDTO
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Surname = p.Soyad,
+                    TcNo = p.TckimlikNo,
+                    BirthDate = p.DogumTarihi,
+                    PhoneNumber = p.TelefonNumarasi,
+                    Gender = p.Cinsiyet,
+                    Address = p.Adres,
+                    DrId = p.Doktorid,
+                    DrName = p.Doktor.Name,
+                    Drsoyad = p.Doktor.Soyad
+                })
+                .ToList();
+
+            return query;
         }
     }
 }

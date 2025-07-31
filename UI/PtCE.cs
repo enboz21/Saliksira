@@ -34,8 +34,6 @@ namespace UI
                     {
                         // DateOnly.FromDateTime() metodu, bir DateTime nesnesinden sadece tarih kısmını alır.
                         DateOnly secilenDateOnly = DateOnly.FromDateTime(secilenDateTime.Value);
-
-                        MessageBox.Show($"Seçilen tarih (DateOnly): {secilenDateOnly.ToShortDateString()}", "Tarih Bilgisi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         String DATA = JsonConvert.SerializeObject(new
                         {
                             name = textEdit1.Text,

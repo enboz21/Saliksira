@@ -47,7 +47,7 @@ namespace Business
             return await _dataSet.GetByName(Name);
         }
 
-        public Task<List<Durum>> GetByTcService(string Tc)
+        public Task<List<MtDTO>> GetByTcService(string Tc)
         {
             throw new NotImplementedException();
         }
