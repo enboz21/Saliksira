@@ -44,6 +44,8 @@
             label6 = new Label();
             label7 = new Label();
             dateEdit1 = new DevExpress.XtraEditors.DateEdit();
+            textEdit4 = new DevExpress.XtraEditors.TextEdit();
+            label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)textEdit3.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textEdit2.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textEdit1.Properties).BeginInit();
@@ -52,13 +54,14 @@
             ((System.ComponentModel.ISupportInitialize)textEdit7.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties.CalendarTimeProperties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)textEdit4.Properties).BeginInit();
             SuspendLayout();
             // 
             // simpleButton1
             // 
             simpleButton1.ImageOptions.Image = (Image)resources.GetObject("simpleButton1.ImageOptions.Image");
             simpleButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            simpleButton1.Location = new Point(242, 199);
+            simpleButton1.Location = new Point(241, 238);
             simpleButton1.LookAndFeel.UseDefaultLookAndFeel = false;
             simpleButton1.Name = "simpleButton1";
             simpleButton1.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
@@ -188,6 +191,23 @@
             dateEdit1.Size = new Size(156, 22);
             dateEdit1.TabIndex = 26;
             // 
+            // textEdit4
+            // 
+            textEdit4.EditValue = "";
+            textEdit4.Location = new Point(121, 199);
+            textEdit4.Name = "textEdit4";
+            textEdit4.Size = new Size(156, 22);
+            textEdit4.TabIndex = 27;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(12, 205);
+            label8.Name = "label8";
+            label8.Size = new Size(58, 16);
+            label8.TabIndex = 28;
+            label8.Text = "Doktor id";
+            // 
             // PtCE
             // 
             ActiveGlowColor = Color.FromArgb(128, 64, 0);
@@ -197,7 +217,9 @@
             Appearance.Options.UseForeColor = true;
             AutoScaleDimensions = new SizeF(7F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(288, 241);
+            ClientSize = new Size(288, 289);
+            Controls.Add(label8);
+            Controls.Add(textEdit4);
             Controls.Add(dateEdit1);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -225,6 +247,7 @@
             ((System.ComponentModel.ISupportInitialize)textEdit7.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties.CalendarTimeProperties).EndInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)textEdit4.Properties).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -246,5 +269,7 @@
         private Label label6;
         private Label label7;
         private DevExpress.XtraEditors.DateEdit dateEdit1;
+        private DevExpress.XtraEditors.TextEdit textEdit4;
+        private Label label8;
     }
 }

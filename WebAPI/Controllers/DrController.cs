@@ -8,6 +8,7 @@ using DataAccsess;
 using Entity;
 using Business;
 using Core;
+using Entity.DTOs;
 
 namespace WebAPI.Controllers
 {
@@ -15,18 +16,23 @@ namespace WebAPI.Controllers
     [ApiController]
     public class DrController : ControllerBase
     {
-        static AContext c = new AContext();
-        DrEdit DrEdit = new DrEdit(c);
-        DataService<Doktorlar> Dts = new DataService<Doktorlar>(new DataBaseAc<Doktorlar>(c));
+        
+        private readonly testCore<Doktorlar, DrDTO> _drDTOService;
+
+        public DrController(testCore<Doktorlar, DrDTO> drDTOService)
+        {
+            _drDTOService = drDTOService;
+        }
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await DrEdit.GetAllAp());
+            return Ok(await _drDTOService.GetAllService());
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var result = await Dts.GetByIdService(id);
+            var result = await _drDTOService.GetByIdService(id);
             if (result == null)
             {
                 return NotFound();
@@ -34,30 +40,30 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Doktorlar doktor)
+        public async Task<IActionResult> Post([FromBody] DrDTO doktor)
         {
             if (doktor == null)
             {
                 return BadRequest("Invalid data.");
             }
-            Doktorlar dr = await Dts.SaveService(doktor);
+            DrDTO dr = await _drDTOService.SaveService(doktor);
             return CreatedAtAction("Get", new {id =dr.Id },dr);
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var doktor = await Dts.GetByIdService(id);
+            var doktor = await _drDTOService.GetByIdService(id);
             if (doktor == null)
             {
                 return NotFound();
             }
-            await Dts.DeleteService(id);
+            await _drDTOService.DeleteService(id);
             return NoContent();
         }
         [HttpGet("byname/{name}")]
         public async Task<IActionResult> GetByName(string name)
         {
-            var result = await Dts.GetByNameService(name);
+            var result = await _drDTOService.GetByNameService(name);
             if (result == null || result.Count == 0)
             {
                 return NotFound();

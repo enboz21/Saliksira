@@ -4,24 +4,28 @@ using Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Core;
+using Entity.DTOs;
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class MtController : ControllerBase
     {
-        static AContext c = new AContext();
+        private readonly testCore<Durum, MtDTO> _mtS;
+        public MtController(testCore<Durum, MtDTO> mts)
+        {
+            _mtS = mts;
+        }
 
-        DataService<Durum> Mts = new DataService<Durum>(new DataBaseAc<Durum>(c));
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await Mts.GetAllService());
+            return Ok(await _mtS.GetAllService());
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var result = await Mts.GetByIdService(id);
+            var result = await _mtS.GetByIdService(id);
             if (result == null)
             {
                 return NotFound();
@@ -29,30 +33,30 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Durum Mt)
+        public async Task<IActionResult> Post([FromBody] MtDTO Mt)
         {
             if (Mt == null)
             {
                 return BadRequest("Invalid data.");
             }
-            Durum A = await Mts.SaveService(Mt);
+            MtDTO A = await _mtS.SaveService(Mt);
             return CreatedAtAction("Get", new { id = A.Id }, A);
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var Mt = await Mts.GetByIdService(id);
+            var Mt = await _mtS.GetByIdService(id);
             if (Mt == null)
             {
                 return NotFound();
             }
-            await Mts.DeleteService(id);
+            await _mtS.DeleteService(id);
             return NoContent();
         }
         /*[HttpGet("byname/{name}")]
         public async Task<IActionResult> GetByName(string name)
         {
-            var result = await Mts.GetByNameService(name);
+            var result = await _mtS.GetByNameService(name);
             if (result == null || result.Count == 0)
             {
                 return NotFound();

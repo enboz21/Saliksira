@@ -81,7 +81,7 @@
             splitContainerControl2.Panel2.Controls.Add(splitContainerControl1);
             splitContainerControl2.Panel2.Text = "Panel2";
             splitContainerControl2.Size = new Size(1199, 592);
-            splitContainerControl2.SplitterPosition = 332;
+            splitContainerControl2.SplitterPosition = 319;
             splitContainerControl2.TabIndex = 5;
             // 
             // Ptce
@@ -89,7 +89,7 @@
             Ptce.ImageOptions.Image = (Image)resources.GetObject("Ptce.ImageOptions.Image");
             Ptce.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             Ptce.ImageOptions.ImageUri.Uri = "Add";
-            Ptce.Location = new Point(1038, 257);
+            Ptce.Location = new Point(1048, 0);
             Ptce.Name = "Ptce";
             Ptce.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             Ptce.Size = new Size(71, 64);
@@ -102,7 +102,7 @@
             PtD.ImageOptions.Image = (Image)resources.GetObject("PtD.ImageOptions.Image");
             PtD.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             PtD.ImageOptions.ImageUri.Uri = "Add";
-            PtD.Location = new Point(961, 257);
+            PtD.Location = new Point(971, 0);
             PtD.Name = "PtD";
             PtD.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             PtD.Size = new Size(71, 64);
@@ -115,7 +115,7 @@
             DrD.ImageOptions.Image = (Image)resources.GetObject("DrD.ImageOptions.Image");
             DrD.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             DrD.ImageOptions.ImageUri.Uri = "Add";
-            DrD.Location = new Point(147, 262);
+            DrD.Location = new Point(147, 3);
             DrD.Name = "DrD";
             DrD.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             DrD.Size = new Size(71, 64);
@@ -128,7 +128,7 @@
             Drce.ImageOptions.Image = (Image)resources.GetObject("Drce.ImageOptions.Image");
             Drce.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             Drce.ImageOptions.ImageUri.Uri = "Add";
-            Drce.Location = new Point(70, 262);
+            Drce.Location = new Point(70, 3);
             Drce.Name = "Drce";
             Drce.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             Drce.Size = new Size(71, 64);
@@ -140,7 +140,7 @@
             // 
             hastalar.ImageOptions.Image = (Image)resources.GetObject("hastalar.ImageOptions.Image");
             hastalar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            hastalar.Location = new Point(1115, 257);
+            hastalar.Location = new Point(1125, 0);
             hastalar.Name = "hastalar";
             hastalar.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             hastalar.Size = new Size(71, 64);
@@ -152,7 +152,7 @@
             // 
             DrRefresh.ImageOptions.Image = (Image)resources.GetObject("DrRefresh.ImageOptions.Image");
             DrRefresh.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            DrRefresh.Location = new Point(3, 262);
+            DrRefresh.Location = new Point(3, 3);
             DrRefresh.Name = "DrRefresh";
             DrRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             DrRefresh.Size = new Size(61, 64);
@@ -175,7 +175,7 @@
             // 
             splitContainerControl1.Panel2.Controls.Add(RightGridControl);
             splitContainerControl1.Panel2.Text = "Panel2";
-            splitContainerControl1.Size = new Size(1199, 248);
+            splitContainerControl1.Size = new Size(1199, 261);
             splitContainerControl1.SplitterPosition = 575;
             splitContainerControl1.TabIndex = 5;
             // 
@@ -185,7 +185,7 @@
             LeftGridControl.Location = new Point(0, 0);
             LeftGridControl.MainView = gridView1;
             LeftGridControl.Name = "LeftGridControl";
-            LeftGridControl.Size = new Size(575, 248);
+            LeftGridControl.Size = new Size(575, 261);
             LeftGridControl.TabIndex = 0;
             LeftGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             // 
@@ -203,7 +203,7 @@
             RightGridControl.Location = new Point(0, 0);
             RightGridControl.MainView = gridView2;
             RightGridControl.Name = "RightGridControl";
-            RightGridControl.Size = new Size(612, 248);
+            RightGridControl.Size = new Size(612, 261);
             RightGridControl.TabIndex = 1;
             RightGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView2 });
             RightGridControl.Click += RightGridControl_Click;

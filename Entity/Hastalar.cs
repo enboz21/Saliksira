@@ -21,5 +21,8 @@ public partial class Hastalar
 
     public string? Adres { get; set; }
 
+    public int Doktorid { get; set; }
+
+    public virtual Doktorlar Doktor { get; set; } = null!;
     public virtual ICollection<Randevular> Randevulars { get; set; } = new List<Randevular>();
 }

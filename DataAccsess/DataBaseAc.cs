@@ -28,13 +28,22 @@ namespace DataAccsess
         public async Task<List<T>> GetAll()
         {
 
-            if (typeof(T) == typeof(Randevular))
+            if (typeof(T)==typeof(Randevular)) 
             {
-
-
+                return await _context.Set<T>()
+                    .Include("Hasta") // Assuming the entity has a navigation property named "Hasta"
+                    .Include("Doktor") // Assuming the entity has a navigation property named "Doktor"
+                    .Include("RandevuDurumuNavigation") // Assuming the entity has a navigation property named "RandevuDurumuNavigation"
+                    .ToListAsync();
+            }
+            else if (typeof(T) == typeof(Hastalar))
+            {
+                return await _context.Set<T>()
+                    .Include("Doktor").ToListAsync();
             }
 
-            return await _context.Set<T>().ToListAsync();
+
+                return await _context.Set<T>().ToListAsync();
         }
 
         public Task<T> GetById(int Id)
@@ -47,6 +56,13 @@ namespace DataAccsess
         {
             return _context.Set<T>()
                 .Where(e => EF.Property<string>(e, "Name") == Name) // Assuming the entity has a Name property
+                .ToListAsync();
+        }
+
+        public Task<List<T>> GetByTc(String Tc)
+        {
+            return _context.Set<T>()
+                .Where(e => EF.Property<string>(e, "TckimlikNo") == Tc) // Assuming the entity has a Name property
                 .ToListAsync();
         }
 

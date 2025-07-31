@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    public interface IDataSer<T> where T : class
+    public interface testCore<T, TT> where T : class where TT : class
     {
-        Task<List<T>> GetAllService();
+        Task<List<TT>> GetAllService();
         Task<T> GetByIdService(int Id);
         Task<List<T>> GetByNameService(string Name);
-        Task<T> SaveService(T Data);
+        Task<TT> SaveService(TT Data);
         Task DeleteService(int Id);
+        Task<List<T>> GetByTcService(String Tc);
     }
 }

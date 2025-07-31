@@ -28,10 +28,10 @@ namespace UI
                     String DATA = JsonConvert.SerializeObject(new
                     {
                         name = Name,
-                        soyad = Surname,
-                        uzmanlikAlani = Speciality,
-                        telefonNumarasi = Phone,
-                        AktifMi = b
+                        Surname = Surname,
+                        Specialization = Speciality,
+                        PhoneNumber = Phone,
+                        vailability = b
                     });
                     HttpContent content = new StringContent(DATA, System.Text.Encoding.UTF8, "application/json");
 
@@ -39,7 +39,7 @@ namespace UI
                     if (response.IsSuccessStatusCode)
                     {
 
-                        MessageBox.Show("Doktorlar Başarıyla Yüklendi! "+b, "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Doktorlar Başarıyla Yüklendi! " + b, "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -57,5 +57,7 @@ namespace UI
             }
 
         }
+
+        
     }
 }

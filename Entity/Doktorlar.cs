@@ -18,4 +18,5 @@ public partial class Doktorlar
     public bool? AktifMi { get; set; }
 
     public virtual ICollection<Randevular> Randevulars { get; set; } = new List<Randevular>();
+    public virtual ICollection<Hastalar> Hastalars { get; set; } = new List<Hastalar>();
 }

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows.Controls;
 
 namespace UI
 {
@@ -39,12 +39,13 @@ namespace UI
                         String DATA = JsonConvert.SerializeObject(new
                         {
                             name = textEdit1.Text,
-                            soyad = textEdit2.Text,
-                            tckimlikNo = textEdit3.Text,
-                            dogumTarihi = secilenDateOnly,
-                            cinsiyet = textEdit5.Text,
-                            telefonNumarasi = textEdit6.Text,
-                            adres = textEdit7.Text
+                            Surname = textEdit2.Text,
+                            TcNo = textEdit3.Text,
+                            BirthDate = secilenDateOnly,
+                            Gender = textEdit5.Text,
+                            PhoneNumber = textEdit6.Text,
+                            Address = textEdit7.Text,
+                            DrId =textEdit4.Text
                         });
                         HttpContent content = new StringContent(DATA, System.Text.Encoding.UTF8, "application/json");
 
