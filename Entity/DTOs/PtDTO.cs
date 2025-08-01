@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace Entity.DTOs
         public String PhoneNumber { get; set; }
         public string Gender { get; set; }
         public string Address { get; set; }
+        [Required]
         public int DrId { get; set; }
         public string? DrName { get; set; }
         public string? Drsoyad { get; set; }

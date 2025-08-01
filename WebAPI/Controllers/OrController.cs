@@ -1,4 +1,5 @@
 ﻿using Business;
+using Business.@interface;
 using Core;
 using DataAccsess;
 using Entity;
@@ -11,9 +12,9 @@ namespace WebAPI.Controllers
     [ApiController]
     public class OrController : ControllerBase
     {
-        private readonly testCore<Randevular, OrDTO> _Or;
+        private readonly IOrSer _Or;
 
-        public OrController(testCore<Randevular, OrDTO> or)
+        public OrController(IOrSer or)
         {
             _Or = or;
         }
@@ -24,7 +25,7 @@ namespace WebAPI.Controllers
 
             try
             {
-                var randevular = await _Or.GetAllService();
+                var randevular = await _Or.GetAll();
                 if (randevular == null || !randevular.Any())
                 {
                     return NotFound("Randevu bulunamadı.");
@@ -47,14 +48,7 @@ namespace WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var yeniRandevu = new OrDTO
-            {
-                HastaId = randevuDto.HastaId,
-                DoktorId = randevuDto.DoktorId,
-                RandevuDurumuId = randevuDto.RandevuDurumuId
-            };
-
-            OrDTO kaydedilenRandevu = await _Or.SaveService(yeniRandevu);
+            OrDTO kaydedilenRandevu = await _Or.Save(randevuDto);
 
             return StatusCode(201, kaydedilenRandevu);
 

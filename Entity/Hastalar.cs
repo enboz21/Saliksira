@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Core;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entity;
 
-public partial class Hastalar
+public partial class Hastalar : IEntity
 {
     public int Id { get; set; }
 
@@ -20,7 +22,7 @@ public partial class Hastalar
     public string? TelefonNumarasi { get; set; }
 
     public string? Adres { get; set; }
-
+    [Required]
     public int Doktorid { get; set; }
 
     public virtual Doktorlar Doktor { get; set; } = null!;

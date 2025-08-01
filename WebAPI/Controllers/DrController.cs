@@ -9,6 +9,8 @@ using Entity;
 using Business;
 using Core;
 using Entity.DTOs;
+using DataAccsess.Interface;
+using Business.@interface;
 
 namespace WebAPI.Controllers
 {
@@ -16,10 +18,10 @@ namespace WebAPI.Controllers
     [ApiController]
     public class DrController : ControllerBase
     {
-        
-        private readonly testCore<Doktorlar, DrDTO> _drDTOService;
 
-        public DrController(testCore<Doktorlar, DrDTO> drDTOService)
+        private readonly IDrSer _drDTOService;
+
+        public DrController(IDrSer drDTOService)
         {
             _drDTOService = drDTOService;
         }
@@ -27,7 +29,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _drDTOService.GetAllService());
+            return Ok(await _drDTOService.GetAll());
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
@@ -46,8 +48,8 @@ namespace WebAPI.Controllers
             {
                 return BadRequest("Invalid data.");
             }
-            DrDTO dr = await _drDTOService.SaveService(doktor);
-            return CreatedAtAction("Get", new {id =dr.Id },dr);
+            DrDTO dr = await _drDTOService.Save(doktor);
+            return CreatedAtAction("Get",dr);
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
@@ -63,7 +65,7 @@ namespace WebAPI.Controllers
         [HttpGet("byname/{name}")]
         public async Task<IActionResult> GetByName(string name)
         {
-            var result = await _drDTOService.GetByNameService(name);
+            var result = await _drDTOService.GetByName(name);
             if (result == null || result.Count == 0)
             {
                 return NotFound();

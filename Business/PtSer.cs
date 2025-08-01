@@ -1,4 +1,7 @@
-﻿using Core;
+﻿using Business.abstrack;
+using Business.@interface;
+using Core;
+using DataAccsess.Interface;
 using Entity;
 using Entity.DTOs;
 using System;
@@ -9,94 +12,85 @@ using System.Threading.Tasks;
 
 namespace Business
 {
-    public class PtSer : testCore<Hastalar, PtDTO>
+    public class PtSer : ServiceBase<Hastalar>, IPtSer
     {
-        private readonly IDataSet<Hastalar> _dataSet;
-
-        public PtSer(IDataSet<Hastalar> dataSet)
+        private readonly IPtSet _dataSet;
+        public PtSer(IPtSet dataSet) : base(dataSet)
         {
             _dataSet = dataSet;
         }
 
-        public Task DeleteService(int Id)
+        public async Task<List<PtDTO>> GetAll()
         {
-            return _dataSet.Delete(Id);
-        }
-
-        public async Task<List<PtDTO>> GetAllService()
-        {
-            var TMP = await _dataSet.GetAll();
-            var query = TMP
-                .Select(p => new PtDTO
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Surname = p.Soyad,
-                    TcNo = p.TckimlikNo,
-                    BirthDate = p.DogumTarihi,
-                    PhoneNumber = p.TelefonNumarasi,
-                    Gender = p.Cinsiyet,
-                    Address = p.Adres,
-                    DrId = p.Doktorid,
-                    DrName = p.Doktor.Name,
-                    Drsoyad = p.Doktor.Soyad
-                })
-                .ToList();
-
-            return query;
-        }
-
-        public async Task<Hastalar> GetByIdService(int Id)
-        {
-            return await _dataSet.GetById(Id);
-        }
-
-        public async Task<List<Hastalar>> GetByNameService(string Name)
-        {
-            return await _dataSet.GetByName(Name);
-        }
-
-        public async Task<PtDTO> SaveService(PtDTO Data)
-        {
-            var TMP = new Hastalar
+            var TEMP = await _dataSet.GetAll();
+            return TEMP.Select(x => new PtDTO
             {
-                Name = Data.Name,
-                Soyad = Data.Surname,
-                TckimlikNo = Data.TcNo,
-                DogumTarihi = Data.BirthDate,
-                Cinsiyet = Data.PhoneNumber,
-                TelefonNumarasi = Data.PhoneNumber,
-                Adres = Data.Address,
-                Doktorid = Data.DrId
-            };
-
-            var TMP2 = await _dataSet.Save(TMP);
-            Data.Id = TMP2.Id;
-            return Data;
+                Id = x.Id,
+                Name = x.Name,
+                Surname = x.Soyad,
+                TcNo = x.TckimlikNo,
+                BirthDate =x.DogumTarihi,
+                Gender = x.Cinsiyet,
+                Address = x.Adres,
+                DrId =x.Doktor.Id,
+                DrName =x.Doktor.Name,
+                Drsoyad = x.Doktor.Soyad
+            }).ToList();
         }
 
-        public async Task<List<PtDTO>> GetByTcService(string Tc)
+        public async Task<List<PtDTO>> GetByName(string NAME)
         {
-            var TMP = await _dataSet.GetByTc(Tc);
+            var TEMP = await _dataSet.GetByName(NAME);
+            var RET = TEMP.Select(x => new PtDTO
+            {
+                Name = x.Name,
+                Surname = x.Soyad,
+                TcNo = x.TckimlikNo,
+                BirthDate = x.DogumTarihi,
+                Gender = x.Cinsiyet,
+                Address = x.Adres,
+                DrId = x.Doktor.Id,
+                DrName = x.Doktor.Name,
+                Drsoyad = x.Doktor.Soyad
 
-            List<PtDTO> query = TMP
-                .Select(p => new PtDTO
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Surname = p.Soyad,
-                    TcNo = p.TckimlikNo,
-                    BirthDate = p.DogumTarihi,
-                    PhoneNumber = p.TelefonNumarasi,
-                    Gender = p.Cinsiyet,
-                    Address = p.Adres,
-                    DrId = p.Doktorid,
-                    DrName = p.Doktor.Name,
-                    Drsoyad = p.Doktor.Soyad
-                })
-                .ToList();
+            }).ToList();
+            return RET;
+        }
 
-            return query;
+        public async Task<PtDTO> GetByTc(string TC)
+        {
+            var TEMP = await _dataSet.GetByTc(TC);
+            var RET = new PtDTO
+            {
+                Name = TEMP.Name,
+                Surname = TEMP.Soyad,
+                TcNo = TEMP.TckimlikNo,
+                BirthDate = TEMP.DogumTarihi,
+                Gender = TEMP.Cinsiyet,
+                Address = TEMP.Adres,
+                DrId = TEMP.Doktor.Id,
+                DrName = TEMP.Doktor.Name,
+                Drsoyad = TEMP.Doktor.Soyad
+            };
+            return RET;
+        }
+
+        public async Task<PtDTO> Save(PtDTO DATA)
+        {
+            var TEMP = new Hastalar{
+                Name = DATA.Name,
+                Soyad = DATA.Surname,
+                TckimlikNo = DATA.TcNo,
+                DogumTarihi = DATA.BirthDate,
+                Cinsiyet = DATA.Gender,
+                TelefonNumarasi = DATA.PhoneNumber,
+                Adres = DATA.Address,
+                Doktorid =DATA.DrId,
+            };
+            TEMP = await _dataSet.Save(TEMP);
+            DATA.Id = TEMP.Id;
+            return DATA;
+
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using Core;
+﻿using Business.abstrack;
+using Business.@interface;
+using Core;
+using DataAccsess.Interface;
 using Entity;
 using Entity.DTOs;
 using System;
@@ -6,63 +9,67 @@ using System.Linq;
 
 namespace Business
 {
-    public class OrSer : testCore<Randevular, OrDTO>
+    public class OrSer : ServiceBase<Randevular>,IOrSer
     {
-        private readonly IDataSet<Randevular> _dataSet;
-        public OrSer(IDataSet<Randevular> dataSet)
+        private readonly IOrSet _dataSet;
+
+        public OrSer(IOrSet dataSet) : base(dataSet)
         {
             _dataSet = dataSet;
         }
 
-        public Task DeleteService(int Id)
+        public async Task<List<OrDTOE>> GetAll()
         {
-            return _dataSet.Delete(Id);
-        }
-
-        public async Task<List<OrDTO>> GetAllService()
-        {
-            var TMP = await _dataSet.GetAll();
-            var query = TMP
-                .Select(o => new OrDTO
-                {
-                    Id = o.Id,
-                    HastaAdi = o.Hasta.Name,
-                    HastaSoyadi = o.Hasta.Soyad,
-                    DoktorAdi = o.Doktor.Name,
-                    DoktorSoyadi = o.Doktor.Soyad,
-                    RandevuDurumu = o.RandevuDurumuNavigation.Durum1
-                })
-                .ToList();
-            return query;
-        }
-
-        public async Task<Randevular> GetByIdService(int Id)
-        {
-            return await _dataSet.GetById(Id);
-        }
-
-        public async Task<List<Randevular>> GetByNameService(string Name)
-        {
-            return await _dataSet.GetByName(Name);
-        }
-
-        public Task<List<OrDTO>> GetByTcService(string Tc)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<OrDTO> SaveService(OrDTO Data)
-        {
-            var TMP = new Randevular
+            var TEMP = await _dataSet.GetAll();
+            return TEMP.Select(x=>new OrDTOE
             {
-                HastaId = Data.HastaId,
-                DoktorId = Data.DoktorId,
-                RandevuDurumu = Data.RandevuDurumuId
+                Id = x.Id,
+                HastaAdi = x.Hasta.Name,
+                HastaSoyadi = x.Hasta.Soyad,
+                DoktorAdi = x.Doktor.Name,
+                DoktorSoyadi = x.Doktor.Soyad,
+                RandevuDurumu = x.RandevuDurumuNavigation.Durum1
+            }).ToList();
+        }
+
+        public async Task<List<OrDTO>> GetByName(string NAME)
+        {
+            var TEMP = await _dataSet.GetByName(NAME);
+            return TEMP.Select(x => new OrDTO
+            {
+                Id = x.Id,
+                HastaId = x.HastaId,
+                DoktorId = x.DoktorId,
+                RandevuDurumuId = x.RandevuDurumu,
+                HastaAdi = x.Hasta.Name,
+                HastaSoyadi = x.Hasta.Soyad,
+                DoktorAdi = x.Doktor.Name,
+                DoktorSoyadi = x.Doktor.Soyad,
+                RandevuDurumu = x.RandevuDurumuNavigation.Durum1
+            }).ToList();
+        }
+
+        public async Task<OrDTO> Save(OrEDTO DATA)
+        {
+            var TEMP = new Randevular
+            {
+                DoktorId = DATA.DoktorId,
+                HastaId = DATA.HastaId,
             };
 
-            var TMP2 = await _dataSet.Save(TMP);
-            Data.Id = TMP2.Id;
-            return Data;
+            TEMP = await _dataSet.Save(TEMP);
+            return new OrDTO
+            {
+                Id = TEMP.Id,
+                HastaId = TEMP.HastaId,
+                DoktorId = TEMP.DoktorId,
+                RandevuDurumuId = TEMP.RandevuDurumu,
+                HastaAdi = TEMP.Hasta.Name,
+                HastaSoyadi = TEMP.Hasta.Soyad,
+                DoktorAdi = TEMP.Doktor.Name,
+                DoktorSoyadi = TEMP.Doktor.Soyad,
+                RandevuDurumu = TEMP.RandevuDurumuNavigation.Durum1
+            };
 
         }
     }

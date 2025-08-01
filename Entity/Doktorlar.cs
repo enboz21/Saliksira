@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Core;
 namespace Entity;
 
-public partial class Doktorlar
+public partial class Doktorlar : IEntity
 {
     public int Id { get; set; }
 
@@ -15,7 +15,7 @@ public partial class Doktorlar
 
     public string? TelefonNumarasi { get; set; }
 
-    public bool? AktifMi { get; set; }
+    public bool AktifMi { get; set; }
 
     public virtual ICollection<Randevular> Randevulars { get; set; } = new List<Randevular>();
     public virtual ICollection<Hastalar> Hastalars { get; set; } = new List<Hastalar>();

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Core;
+using System;
 using System.Collections.Generic;
 
 namespace Entity;
 
-public partial class Durum
+public partial class Durum : IEntity
 {
     public byte Id { get; set; }
 

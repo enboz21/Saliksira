@@ -1,4 +1,5 @@
 ﻿using Business;
+using Business.@interface;
 using Core;
 using DataAccsess;
 using Entity;
@@ -12,15 +13,15 @@ namespace WebAPI.Controllers
     [ApiController]
     public class PtController : ControllerBase
     {
-        private readonly testCore<Hastalar, PtDTO> _pts;
-        public PtController(testCore<Hastalar, PtDTO> pts)
+        private readonly IPtSer _pts;
+        public PtController(IPtSer pts)
         {
             _pts = pts;
         }
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _pts.GetAllService());
+            return Ok(await _pts.GetAll());
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
@@ -39,7 +40,7 @@ namespace WebAPI.Controllers
             {
                 return BadRequest("Invalid data.");
             }
-            PtDTO A = await _pts.SaveService(hastalar);
+            PtDTO A = await _pts.Save(hastalar);
             return CreatedAtAction("Get", new { id = A.Id }, A);
         }
         [HttpDelete("{id}")]
@@ -56,7 +57,7 @@ namespace WebAPI.Controllers
         [HttpGet("by-name/{name}")]
         public async Task<IActionResult> GetByName(string name)
         {
-            var result = await _pts.GetByNameService(name);
+            var result = await _pts.GetByName(name);
             if (result == null || result.Count == 0)
             {
                 return NotFound();
@@ -66,8 +67,8 @@ namespace WebAPI.Controllers
         [HttpGet("by-tc/{Tc}")]
         public async Task<IActionResult> GetByTc(string Tc)
         {
-            var result = await _pts.GetByTcService(Tc);
-            if (result == null || result.Count == 0)
+            var result = await _pts.GetByTc(Tc);
+            if (result == null)
             {
                 return NotFound();
             }

@@ -1,67 +1,47 @@
 ﻿using Core;
 using Entity.DTOs;
+
+
 using Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Business.abstrack;
+using Business.@interface;
+using DataAccsess.Interface;
 
 namespace Business
 {
-    public class MtSer : testCore<Durum, MtDTO>
+    public class MtSer : ServiceBase<Durum>, IMtSer
     {
-        private readonly IDataSet<Durum> _dataSet;
-
-        public MtSer(IDataSet<Durum> dataSet)
+        private readonly IMtSet _dataSet;
+        public MtSer(IMtSet dataSet) : base(dataSet)
         {
             _dataSet = dataSet;
         }
 
-        public Task DeleteService(int Id)
+        public async Task<List<MtDTO>> GetAll()
         {
-            return _dataSet.Delete(Id);
-        }
-
-        public async Task<List<MtDTO>> GetAllService()
-        {
-            var TMP = await _dataSet.GetAll();
-            var query = TMP
-                .Select(p => new MtDTO
-                {
-                    Id = p.Id,
-                    Durum = p.Durum1
-                })
-                .ToList();
-
-            return query;
-        }
-
-        public async Task<Durum> GetByIdService(int Id)
-        {
-            return await _dataSet.GetById(Id);
-        }
-
-        public async Task<List<Durum>> GetByNameService(string Name)
-        {
-            return await _dataSet.GetByName(Name);
-        }
-
-        public Task<List<MtDTO>> GetByTcService(string Tc)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<MtDTO> SaveService(MtDTO Data)
-        {
-            var TMP = new Durum
+            var TEMP = await _dataSet.GetAll();
+            return TEMP.Select(x =>new MtDTO
             {
-                Durum1 = Data.Durum
-            };
+                Id = x.Id,
+                Durum = x.Durum1
+            }).ToList();
+        }
 
-            var TMP2 = await _dataSet.Save(TMP);
-            Data.Id = TMP2.Id;
-            return Data;
+        public async Task<MtDTO> Save(MtDTO DATA)
+        {
+            var TEMP = new Durum
+                {
+                    Id= DATA.Id,
+                    Durum1 = DATA.Durum
+                };
+            TEMP = await _dataSet.Save(TEMP);
+            DATA.Id = TEMP.Id;
+            return DATA;
         }
     }
 }
