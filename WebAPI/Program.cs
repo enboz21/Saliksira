@@ -22,6 +22,8 @@ builder.Services.AddScoped<IDrSer, DrSer>();
 builder.Services.AddScoped<IPtSer, PtSer>();
 builder.Services.AddScoped<IOrSer, OrSer>();
 builder.Services.AddScoped<IMtSer, MtSer>();
+builder.Services.AddScoped<IGeSet, GeSet>();
+builder.Services.AddScoped<IGeSer, GeSer>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

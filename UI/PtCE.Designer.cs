@@ -37,24 +37,24 @@
             textEdit3 = new DevExpress.XtraEditors.TextEdit();
             textEdit2 = new DevExpress.XtraEditors.TextEdit();
             textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            textEdit5 = new DevExpress.XtraEditors.TextEdit();
             textEdit6 = new DevExpress.XtraEditors.TextEdit();
             textEdit7 = new DevExpress.XtraEditors.TextEdit();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
             dateEdit1 = new DevExpress.XtraEditors.DateEdit();
-            textEdit4 = new DevExpress.XtraEditors.TextEdit();
             label8 = new Label();
+            lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)textEdit3.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textEdit2.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textEdit1.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)textEdit5.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textEdit6.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textEdit7.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties.CalendarTimeProperties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)textEdit4.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)lookUpEdit1.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)lookUpEdit2.Properties).BeginInit();
             SuspendLayout();
             // 
             // simpleButton1
@@ -130,14 +130,6 @@
             textEdit1.Size = new Size(156, 22);
             textEdit1.TabIndex = 10;
             // 
-            // textEdit5
-            // 
-            textEdit5.EditValue = "";
-            textEdit5.Location = new Point(121, 115);
-            textEdit5.Name = "textEdit5";
-            textEdit5.Size = new Size(156, 22);
-            textEdit5.TabIndex = 20;
-            // 
             // textEdit6
             // 
             textEdit6.EditValue = "";
@@ -191,14 +183,6 @@
             dateEdit1.Size = new Size(156, 22);
             dateEdit1.TabIndex = 26;
             // 
-            // textEdit4
-            // 
-            textEdit4.EditValue = "";
-            textEdit4.Location = new Point(121, 199);
-            textEdit4.Name = "textEdit4";
-            textEdit4.Size = new Size(156, 22);
-            textEdit4.TabIndex = 27;
-            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -207,6 +191,24 @@
             label8.Size = new Size(58, 16);
             label8.TabIndex = 28;
             label8.Text = "Doktor id";
+            // 
+            // lookUpEdit1
+            // 
+            lookUpEdit1.Location = new Point(121, 115);
+            lookUpEdit1.Name = "lookUpEdit1";
+            lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            lookUpEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            lookUpEdit1.Size = new Size(155, 22);
+            lookUpEdit1.TabIndex = 29;
+            // 
+            // lookUpEdit2
+            // 
+            lookUpEdit2.Location = new Point(122, 199);
+            lookUpEdit2.Name = "lookUpEdit2";
+            lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            lookUpEdit2.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            lookUpEdit2.Size = new Size(155, 22);
+            lookUpEdit2.TabIndex = 30;
             // 
             // PtCE
             // 
@@ -218,15 +220,15 @@
             AutoScaleDimensions = new SizeF(7F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(288, 289);
+            Controls.Add(lookUpEdit2);
+            Controls.Add(lookUpEdit1);
             Controls.Add(label8);
-            Controls.Add(textEdit4);
             Controls.Add(dateEdit1);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(textEdit7);
             Controls.Add(textEdit6);
-            Controls.Add(textEdit5);
             Controls.Add(simpleButton1);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -239,15 +241,16 @@
             InactiveGlowColor = Color.FromArgb(192, 192, 0);
             Name = "PtCE";
             Text = "PtCE";
+            Load += PtCE_Load;
             ((System.ComponentModel.ISupportInitialize)textEdit3.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)textEdit2.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)textEdit1.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)textEdit5.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)textEdit6.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)textEdit7.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties.CalendarTimeProperties).EndInit();
             ((System.ComponentModel.ISupportInitialize)dateEdit1.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)textEdit4.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)lookUpEdit1.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)lookUpEdit2.Properties).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -262,7 +265,6 @@
         private DevExpress.XtraEditors.TextEdit textEdit3;
         private DevExpress.XtraEditors.TextEdit textEdit2;
         private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraEditors.TextEdit textEdit5;
         private DevExpress.XtraEditors.TextEdit textEdit6;
         private DevExpress.XtraEditors.TextEdit textEdit7;
         private Label label5;
@@ -271,5 +273,7 @@
         private DevExpress.XtraEditors.DateEdit dateEdit1;
         private DevExpress.XtraEditors.TextEdit textEdit4;
         private Label label8;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit2;
     }
 }

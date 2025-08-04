@@ -30,6 +30,7 @@ namespace Business
                 Surname = x.Soyad,
                 TcNo = x.TckimlikNo,
                 BirthDate =x.DogumTarihi,
+                PhoneNumber=x.TelefonNumarasi,
                 Genderid = x.Cins.Id,
                 Gender = x.Cins.Cinsiyet,
                 Address = x.Adres,

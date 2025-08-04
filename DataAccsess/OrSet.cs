@@ -34,5 +34,7 @@ namespace DataAccsess
                     .Where(e => EF.Property<string>(e, "Name") == name)
                     .ToListAsync();
         }
+
+        
     }
 }

@@ -142,6 +142,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(862, 610);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "StartForm";
             Text = "StartForm";
             WindowState = FormWindowState.Maximized;

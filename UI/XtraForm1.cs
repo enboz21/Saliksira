@@ -123,8 +123,8 @@ namespace UI
                         if (a.Equals("Dr"))
                         {
                             // Doktor verilerini deserialize et ve grid'e ata
-                            List<DrDTO> doktorListesi = JsonConvert.DeserializeObject<List<DrDTO>>(jsonResponse);
-                            LeftGridControl.DataSource = doktorListesi;
+                            List<DrDTO> Hasta = JsonConvert.DeserializeObject<List<DrDTO>>(jsonResponse);
+                            LeftGridControl.DataSource = Hasta;
                         }
                         else if (a.Equals("Pt"))
                         {
@@ -175,6 +175,19 @@ namespace UI
         private void XtraForm1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            StartForm Sf = new StartForm();
+            this.Hide();
+            Sf.ShowDialog();
+        }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {   
+            Takip ta = new Takip();
+            ta.ShowDialog();
         }
     }
 }

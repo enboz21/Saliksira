@@ -16,14 +16,14 @@ namespace Entity.DTOs
 
         public byte RandevuDurumuId { get; set; }
 
-        public string HastaAdi { get; set; } = null!;
+        public string? HastaAdi { get; set; } = null!;
 
-        public string HastaSoyadi { get; set; } = null!;
+        public string? HastaSoyadi { get; set; } = null!;
 
-        public string DoktorAdi { get; set; } = null!;
+        public string? DoktorAdi { get; set; } = null!;
 
-        public string DoktorSoyadi { get; set; } = null!;
+        public string? DoktorSoyadi { get; set; } = null!;
 
-        public String RandevuDurumu { get; set; }
+        public String? RandevuDurumu { get; set; }
     }
 }

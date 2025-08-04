@@ -55,6 +55,7 @@ namespace Business
             {
                 DoktorId = DATA.DoktorId,
                 HastaId = DATA.HastaId,
+                RandevuDurumu = (byte) 1
             };
 
             TEMP = await _dataSet.Save(TEMP);
@@ -63,12 +64,7 @@ namespace Business
                 Id = TEMP.Id,
                 HastaId = TEMP.HastaId,
                 DoktorId = TEMP.DoktorId,
-                RandevuDurumuId = TEMP.RandevuDurumu,
-                HastaAdi = TEMP.Hasta.Name,
-                HastaSoyadi = TEMP.Hasta.Soyad,
-                DoktorAdi = TEMP.Doktor.Name,
-                DoktorSoyadi = TEMP.Doktor.Soyad,
-                RandevuDurumu = TEMP.RandevuDurumuNavigation.Durum1
+                RandevuDurumuId = TEMP.RandevuDurumu
             };
 
         }

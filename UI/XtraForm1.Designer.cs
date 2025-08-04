@@ -36,16 +36,20 @@
             barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            Ptce = new DevExpress.XtraEditors.SimpleButton();
-            PtD = new DevExpress.XtraEditors.SimpleButton();
-            DrD = new DevExpress.XtraEditors.SimpleButton();
-            Drce = new DevExpress.XtraEditors.SimpleButton();
-            hastalar = new DevExpress.XtraEditors.SimpleButton();
-            DrRefresh = new DevExpress.XtraEditors.SimpleButton();
+            ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             LeftGridControl = new DevExpress.XtraGrid.GridControl();
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -80,12 +84,6 @@
             // splitContainerControl2.Panel1
             // 
             splitContainerControl2.Panel1.Controls.Add(ribbonControl1);
-            splitContainerControl2.Panel1.Controls.Add(Ptce);
-            splitContainerControl2.Panel1.Controls.Add(PtD);
-            splitContainerControl2.Panel1.Controls.Add(DrD);
-            splitContainerControl2.Panel1.Controls.Add(Drce);
-            splitContainerControl2.Panel1.Controls.Add(hastalar);
-            splitContainerControl2.Panel1.Controls.Add(DrRefresh);
             splitContainerControl2.Panel1.Text = "Panel1";
             // 
             // splitContainerControl2.Panel2
@@ -99,9 +97,9 @@
             // ribbonControl1
             // 
             ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, ribbonControl1.SearchEditItem, barButtonItem1, barButtonItem2, barButtonItem3, barButtonItem4, barButtonItem5 });
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, ribbonControl1.SearchEditItem, barButtonItem1, barButtonItem2, barButtonItem3, barButtonItem4, barButtonItem5, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barButtonItem10 });
             ribbonControl1.Location = new Point(0, 0);
-            ribbonControl1.MaxItemId = 6;
+            ribbonControl1.MaxItemId = 11;
             ribbonControl1.Name = "ribbonControl1";
             ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1 });
             ribbonControl1.Size = new Size(1199, 183);
@@ -134,6 +132,7 @@
             barButtonItem4.ImageOptions.Image = (Image)resources.GetObject("barButtonItem4.ImageOptions.Image");
             barButtonItem4.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem4.ImageOptions.LargeImage");
             barButtonItem4.Name = "barButtonItem4";
+            barButtonItem4.ItemClick += Drce_Click;
             // 
             // barButtonItem5
             // 
@@ -142,10 +141,56 @@
             barButtonItem5.ImageOptions.Image = (Image)resources.GetObject("barButtonItem5.ImageOptions.Image");
             barButtonItem5.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem5.ImageOptions.LargeImage");
             barButtonItem5.Name = "barButtonItem5";
+            barButtonItem5.ItemClick += DrD_Click;
+            // 
+            // barButtonItem6
+            // 
+            barButtonItem6.Caption = "Hastalar";
+            barButtonItem6.Id = 6;
+            barButtonItem6.ImageOptions.Image = (Image)resources.GetObject("barButtonItem6.ImageOptions.Image");
+            barButtonItem6.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem6.ImageOptions.LargeImage");
+            barButtonItem6.Name = "barButtonItem6";
+            barButtonItem6.ItemClick += hastalar_Click;
+            // 
+            // barButtonItem7
+            // 
+            barButtonItem7.Caption = "Hasta ekle";
+            barButtonItem7.Id = 7;
+            barButtonItem7.ImageOptions.Image = (Image)resources.GetObject("barButtonItem7.ImageOptions.Image");
+            barButtonItem7.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem7.ImageOptions.LargeImage");
+            barButtonItem7.Name = "barButtonItem7";
+            barButtonItem7.ItemClick += Ptce_Click;
+            // 
+            // barButtonItem8
+            // 
+            barButtonItem8.Caption = "Hasta sil";
+            barButtonItem8.Id = 8;
+            barButtonItem8.ImageOptions.Image = (Image)resources.GetObject("barButtonItem8.ImageOptions.Image");
+            barButtonItem8.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem8.ImageOptions.LargeImage");
+            barButtonItem8.Name = "barButtonItem8";
+            barButtonItem8.ItemClick += PtD_Click;
+            // 
+            // barButtonItem9
+            // 
+            barButtonItem9.Caption = "giriş";
+            barButtonItem9.Id = 9;
+            barButtonItem9.ImageOptions.Image = (Image)resources.GetObject("barButtonItem9.ImageOptions.Image");
+            barButtonItem9.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem9.ImageOptions.LargeImage");
+            barButtonItem9.Name = "barButtonItem9";
+            barButtonItem9.ItemClick += barButtonItem9_ItemClick;
+            // 
+            // barButtonItem10
+            // 
+            barButtonItem10.Caption = "Takip paneli";
+            barButtonItem10.Id = 10;
+            barButtonItem10.ImageOptions.Image = (Image)resources.GetObject("barButtonItem10.ImageOptions.Image");
+            barButtonItem10.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem10.ImageOptions.LargeImage");
+            barButtonItem10.Name = "barButtonItem10";
+            barButtonItem10.ItemClick += barButtonItem10_ItemClick;
             // 
             // ribbonPage1
             // 
-            ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup2, ribbonPageGroup3 });
+            ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup2, ribbonPageGroup3, ribbonPageGroup4, ribbonPageGroup5, ribbonPageGroup6, ribbonPageGroup7, ribbonPageGroup8 });
             ribbonPage1.Name = "ribbonPage1";
             ribbonPage1.Text = "ribbonPage1";
             // 
@@ -164,81 +209,30 @@
             ribbonPageGroup3.ItemLinks.Add(barButtonItem5);
             ribbonPageGroup3.Name = "ribbonPageGroup3";
             // 
-            // Ptce
+            // ribbonPageGroup4
             // 
-            Ptce.ImageOptions.Image = (Image)resources.GetObject("Ptce.ImageOptions.Image");
-            Ptce.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            Ptce.ImageOptions.ImageUri.Uri = "Add";
-            Ptce.Location = new Point(1048, 243);
-            Ptce.Name = "Ptce";
-            Ptce.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            Ptce.Size = new Size(71, 64);
-            Ptce.TabIndex = 11;
-            Ptce.Text = "Hasta Ekle";
-            Ptce.Click += Ptce_Click;
+            ribbonPageGroup4.ItemLinks.Add(barButtonItem6);
+            ribbonPageGroup4.Name = "ribbonPageGroup4";
             // 
-            // PtD
+            // ribbonPageGroup5
             // 
-            PtD.ImageOptions.Image = (Image)resources.GetObject("PtD.ImageOptions.Image");
-            PtD.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            PtD.ImageOptions.ImageUri.Uri = "Add";
-            PtD.Location = new Point(971, 243);
-            PtD.Name = "PtD";
-            PtD.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            PtD.Size = new Size(71, 64);
-            PtD.TabIndex = 10;
-            PtD.Text = "Hasta Sil";
-            PtD.Click += PtD_Click;
+            ribbonPageGroup5.ItemLinks.Add(barButtonItem7);
+            ribbonPageGroup5.Name = "ribbonPageGroup5";
             // 
-            // DrD
+            // ribbonPageGroup6
             // 
-            DrD.ImageOptions.Image = (Image)resources.GetObject("DrD.ImageOptions.Image");
-            DrD.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            DrD.ImageOptions.ImageUri.Uri = "Add";
-            DrD.Location = new Point(147, 246);
-            DrD.Name = "DrD";
-            DrD.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            DrD.Size = new Size(71, 64);
-            DrD.TabIndex = 9;
-            DrD.Text = "Doktor Sil";
-            DrD.Click += DrD_Click;
+            ribbonPageGroup6.ItemLinks.Add(barButtonItem8);
+            ribbonPageGroup6.Name = "ribbonPageGroup6";
             // 
-            // Drce
+            // ribbonPageGroup7
             // 
-            Drce.ImageOptions.Image = (Image)resources.GetObject("Drce.ImageOptions.Image");
-            Drce.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            Drce.ImageOptions.ImageUri.Uri = "Add";
-            Drce.Location = new Point(70, 246);
-            Drce.Name = "Drce";
-            Drce.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            Drce.Size = new Size(71, 64);
-            Drce.TabIndex = 8;
-            Drce.Text = "Doktor Ekle";
-            Drce.Click += Drce_Click;
+            ribbonPageGroup7.ItemLinks.Add(barButtonItem9);
+            ribbonPageGroup7.Name = "ribbonPageGroup7";
             // 
-            // hastalar
+            // ribbonPageGroup8
             // 
-            hastalar.ImageOptions.Image = (Image)resources.GetObject("hastalar.ImageOptions.Image");
-            hastalar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            hastalar.Location = new Point(1125, 243);
-            hastalar.Name = "hastalar";
-            hastalar.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            hastalar.Size = new Size(71, 64);
-            hastalar.TabIndex = 7;
-            hastalar.Text = "hastalar";
-            hastalar.Click += hastalar_Click;
-            // 
-            // DrRefresh
-            // 
-            DrRefresh.ImageOptions.Image = (Image)resources.GetObject("DrRefresh.ImageOptions.Image");
-            DrRefresh.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            DrRefresh.Location = new Point(3, 246);
-            DrRefresh.Name = "DrRefresh";
-            DrRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            DrRefresh.Size = new Size(61, 64);
-            DrRefresh.TabIndex = 6;
-            DrRefresh.Text = "Doktorlar";
-            DrRefresh.Click += DrRefresh_Click;
+            ribbonPageGroup8.ItemLinks.Add(barButtonItem10);
+            ribbonPageGroup8.Name = "ribbonPageGroup8";
             // 
             // splitContainerControl1
             // 
@@ -256,7 +250,7 @@
             splitContainerControl1.Panel2.Controls.Add(RightGridControl);
             splitContainerControl1.Panel2.Text = "Panel2";
             splitContainerControl1.Size = new Size(1199, 261);
-            splitContainerControl1.SplitterPosition = 575;
+            splitContainerControl1.SplitterPosition = 639;
             splitContainerControl1.TabIndex = 5;
             // 
             // LeftGridControl
@@ -265,7 +259,7 @@
             LeftGridControl.Location = new Point(0, 0);
             LeftGridControl.MainView = gridView1;
             LeftGridControl.Name = "LeftGridControl";
-            LeftGridControl.Size = new Size(575, 261);
+            LeftGridControl.Size = new Size(639, 261);
             LeftGridControl.TabIndex = 0;
             LeftGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             // 
@@ -283,7 +277,7 @@
             RightGridControl.Location = new Point(0, 0);
             RightGridControl.MainView = gridView2;
             RightGridControl.Name = "RightGridControl";
-            RightGridControl.Size = new Size(612, 261);
+            RightGridControl.Size = new Size(548, 261);
             RightGridControl.TabIndex = 1;
             RightGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView2 });
             RightGridControl.Click += RightGridControl_Click;
@@ -337,12 +331,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.GridControl RightGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraEditors.SimpleButton hastalar;
-        private DevExpress.XtraEditors.SimpleButton DrRefresh;
-        private DevExpress.XtraEditors.SimpleButton Drce;
-        private DevExpress.XtraEditors.SimpleButton DrD;
-        private DevExpress.XtraEditors.SimpleButton PtD;
-        private DevExpress.XtraEditors.SimpleButton Ptce;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
@@ -353,5 +341,15 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
     }
 }

@@ -13,6 +13,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace UI
 {
@@ -81,17 +82,17 @@ namespace UI
 
                     if (response.IsSuccessStatusCode)
                     {
-                        List<PtDTO> ptDto = Newtonsoft.Json.JsonConvert.DeserializeObject<List<PtDTO>>(jsonString);
+                        PtDTO ptDto = JsonConvert.DeserializeObject<PtDTO>(jsonString);
                         String[] X = new string[4];
-                        foreach (var item in ptDto)
-                        {
-                            X[0]=item.Name;
-                            X[1] = item.DrName;
-                            X[2] = Convert.ToString(item.DrId);
-                            X[3]= Convert.ToString(item.Id);
-
-                        }
                         
+                        
+                            X[0]= ptDto.Name;
+                            X[1] = ptDto.DrName;
+                            X[2] = Convert.ToString(ptDto.DrId);
+                            X[3]= Convert.ToString(ptDto.Id);
+                        
+                        
+
                         return X ; // PtDTO'dan ismi alıyoruz.
                     }
                     return null;
@@ -113,8 +114,7 @@ namespace UI
                 String DATA = JsonConvert.SerializeObject(new
                 {
                     hastaId = Id,
-                    doktorId = DrId,
-                    randevuDurumuID="1"
+                    doktorId = DrId
                 });
                 HttpContent content = new StringContent(DATA, System.Text.Encoding.UTF8, "application/json");
 
