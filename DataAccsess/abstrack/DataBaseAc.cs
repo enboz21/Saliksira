@@ -42,5 +42,12 @@ namespace DataAccsess.abstrack
             await _context.SaveChangesAsync();
             return Data;
         }
+
+        public async Task<T> Update(T Data)
+        {
+            _context.Set<T>().Update(Data);
+            await _context.SaveChangesAsync();
+            return Data;
+        }
     }
 }

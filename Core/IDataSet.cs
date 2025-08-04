@@ -8,5 +8,6 @@
         Task<T> GetById(int Id);
 
         Task<T> Save(T Data);
+        Task<T> Update(T Data);
     }
 }

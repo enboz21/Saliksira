@@ -64,22 +64,27 @@ namespace Business
         public async Task<PtDTO> GetByTc(string TC)
         {
             var TEMP = await _dataSet.GetByTc(TC);
-            var RET = new PtDTO
+            if (TEMP != null)
             {
-                Id = TEMP.Id,
-                Name = TEMP.Name,
-                Surname = TEMP.Soyad,
-                TcNo = TEMP.TckimlikNo,
-                BirthDate = TEMP.DogumTarihi,
-                Genderid = TEMP.Cins.Id,
-                Gender = TEMP.Cins.Cinsiyet,
-                Address = TEMP.Adres,
-                DrId = TEMP.Doktor.Id,
-                DrName = TEMP.Doktor.Name,
-                Drsoyad = TEMP.Doktor.Soyad
-            };
-            return RET;
+                var RET = new PtDTO
+                {
+                    Id = TEMP.Id,
+                    Name = TEMP.Name,
+                    Surname = TEMP.Soyad,
+                    TcNo = TEMP.TckimlikNo,
+                    BirthDate = TEMP.DogumTarihi,
+                    Genderid = TEMP.Cins.Id,
+                    Gender = TEMP.Cins.Cinsiyet,
+                    Address = TEMP.Adres,
+                    DrId = TEMP.Doktor.Id,
+                    DrName = TEMP.Doktor.Name,
+                    Drsoyad = TEMP.Doktor.Soyad
+                };
+                return RET;
+            }
+            return null;
         }
+            
 
         public async Task<PtDTO> Save(PtDTO DATA)
         {
@@ -97,6 +102,19 @@ namespace Business
             DATA.Id = TEMP.Id;
             return DATA;
 
+        }
+
+        public Task<PtDTO> Update(PtDTO DATA)
+        {
+            var TEMP = new Hastalar
+            {
+                Id = DATA.Id,
+                Name = DATA.Name,
+                Soyad=DATA.Surname,
+                TckimlikNo=DATA.TcNo,
+                DogumTarihi=DATA.BirthDate,
+
+            }
         }
     }
 }

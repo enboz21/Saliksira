@@ -1,15 +1,12 @@
 ﻿using Business.abstrack;
 using Business.@interface;
-using Core;
 using DataAccsess.Interface;
 using Entity;
 using Entity.DTOs;
-using System;
-using System.Linq;
 
 namespace Business
 {
-    public class OrSer : ServiceBase<Randevular>,IOrSer
+    public class OrSer : ServiceBase<Randevular>, IOrSer
     {
         private readonly IOrSet _dataSet;
 
@@ -21,7 +18,7 @@ namespace Business
         public async Task<List<OrDTOE>> GetAll()
         {
             var TEMP = await _dataSet.GetAll();
-            return TEMP.Select(x=>new OrDTOE
+            return TEMP.Select(x => new OrDTOE
             {
                 Id = x.Id,
                 HastaAdi = x.Hasta.Name,
@@ -72,18 +69,18 @@ namespace Business
             {
                 DoktorId = DATA.DoktorId,
                 HastaId = (int)DATA.HastaId,
-                RandevuDurumu = (byte) 1
+                RandevuDurumu = (byte)1
             };
-            
-                TEMP = await _dataSet.Save(TEMP);
-                return new OrDTO
-                {
-                    Id = TEMP.Id,
-                    HastaId = TEMP.HastaId,
-                    DoktorId = TEMP.DoktorId,
-                    RandevuDurumuId = TEMP.RandevuDurumu
-                };
-           
+
+            TEMP = await _dataSet.Save(TEMP);
+            return new OrDTO
+            {
+                Id = TEMP.Id,
+                HastaId = TEMP.HastaId,
+                DoktorId = TEMP.DoktorId,
+                RandevuDurumuId = TEMP.RandevuDurumu
+            };
+
 
         }
     }

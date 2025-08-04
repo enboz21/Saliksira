@@ -1,11 +1,6 @@
 ﻿using Core;
 using Entity;
 using Entity.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.@interface
 {
@@ -16,5 +11,6 @@ namespace Business.@interface
         Task<List<PtDTO>> GetByName(String NAME);
 
         Task<PtDTO> Save(PtDTO DATA);
+        Task<PtDTO> Update(PtDTO DATA);
     }
 }

@@ -72,5 +72,17 @@ namespace WebAPI.Controllers
             }
             return Ok(result);
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] DrDTO doktor)
+        {
+            if (doktor == null)
+            {
+                return BadRequest("Invalid data.");
+            }
+            DrDTO dr = await _drDTOService.Update(doktor);
+            return CreatedAtAction("Get", dr);
+        }
+
     }
 }

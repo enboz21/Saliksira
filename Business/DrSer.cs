@@ -3,7 +3,6 @@ using Business.@interface;
 using DataAccsess.Interface;
 using Entity;
 using Entity.DTOs;
-using System;
 using System.Data;
 
 namespace Business
@@ -61,6 +60,33 @@ namespace Business
             TEMP = await _dataSet.Save(TEMP);
             dr.Id = TEMP.Id;
             return dr;
+
+        }
+
+        public async Task<DrDTO> Update(DrDTO dr)
+        {
+            var TEMP = new Doktorlar
+            {
+                Id = dr.Id,
+                Name = dr.Name,
+                Soyad = dr.Surname,
+                UzmanlikAlani = dr.Specialization,
+                TelefonNumarasi = dr.PhoneNumber,
+                AktifMi = dr.vailability
+            };
+
+
+            TEMP = await _dataSet.Update(TEMP);
+
+            return new DrDTO
+            {
+                Id= TEMP.Id,
+                Name= TEMP.Name,
+                Surname = TEMP.Soyad,
+                Specialization = TEMP.UzmanlikAlani,
+                PhoneNumber = TEMP.TelefonNumarasi,
+                vailability = TEMP.AktifMi
+            };
 
         }
     }

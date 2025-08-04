@@ -1,19 +1,6 @@
-﻿using DevExpress.XtraEditors;
-using Entity.DTOs; // PtDTO sınıfı için gerekli
+﻿using Entity.DTOs; // PtDTO sınıfı için gerekli
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace UI
 {
@@ -47,12 +34,13 @@ namespace UI
                 // UI'ın bloke olmaması için await kullanıyoruz.
                 string[] hastaAdi = await AdAsync(textEdit1.Text);
 
-                // Eğer hasta adı başarıyla alındıysa, işlemleri başlat.
-                if (!string.IsNullOrEmpty(hastaAdi[0]))
+                try
                 {
+                    // Eğer hasta adı başarıyla alındıysa, işlemleri başlat.
+
                     // Bu satır await sonrasında otomatik olarak UI thread'inde çalışır.
                     textEdit2.Text = hastaAdi[0] + " Hoşgeldiniz";
-                    textEdit3.Text = "Doktorunuz : "+ hastaAdi[1];
+                    textEdit3.Text = "Doktorunuz : " + hastaAdi[1];
                     Add(Convert.ToInt32(hastaAdi[3]), Convert.ToInt32(hastaAdi[2]));
                     panel2.Visible = true;
 
@@ -61,10 +49,16 @@ namespace UI
 
                     // Gecikme bittikten sonra, bu satırlar da UI thread'inde çalışacaktır.
                     panel2.Visible = false;
-                    
+
+
+                }
+                catch (Exception s)
+                {
+
                 }
                 textEdit1.EditValue = null;
                 textEdit1.Focus();
+
             }
         }
 
@@ -84,16 +78,16 @@ namespace UI
                     {
                         PtDTO ptDto = JsonConvert.DeserializeObject<PtDTO>(jsonString);
                         String[] X = new string[4];
-                        
-                        
-                            X[0]= ptDto.Name;
-                            X[1] = ptDto.DrName;
-                            X[2] = Convert.ToString(ptDto.DrId);
-                            X[3]= Convert.ToString(ptDto.Id);
-                        
-                        
 
-                        return X ; // PtDTO'dan ismi alıyoruz.
+
+                        X[0] = ptDto.Name;
+                        X[1] = ptDto.DrName;
+                        X[2] = Convert.ToString(ptDto.DrId);
+                        X[3] = Convert.ToString(ptDto.Id);
+
+
+
+                        return X; // PtDTO'dan ismi alıyoruz.
                     }
                     return null;
                 }
@@ -105,11 +99,11 @@ namespace UI
                 }
             }
         }
-        private async Task Add(int Id,int DrId)
+        private async Task Add(int Id, int DrId)
         {
-            String apiUrl = baseUrl + "Or/"+Id;
+            String apiUrl = baseUrl + "Or/" + Id;
 
-            using (HttpClient client = new HttpClient()) 
+            using (HttpClient client = new HttpClient())
             {
                 HttpResponseMessage response = await client.GetAsync(apiUrl);
                 string jsonString = await response.Content.ReadAsStringAsync();
@@ -127,7 +121,7 @@ namespace UI
 
                 }
 
-                    
+
             }
         }
     }

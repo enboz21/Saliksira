@@ -5,9 +5,9 @@ using System.Net.Http;
 
 namespace UI
 {
-    public partial class DrCE : DevExpress.XtraEditors.XtraForm
+    public partial class DrC : DevExpress.XtraEditors.XtraForm
     {
-        public DrCE()
+        public DrC()
         {
             InitializeComponent();
         }

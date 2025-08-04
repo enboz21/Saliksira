@@ -40,7 +40,7 @@ namespace UI
 
         private void Drce_Click(object sender, EventArgs e)
         {
-            using (DrCE drce = new DrCE())
+            using (DrC drce = new DrC())
             {
                 drce.ShowDialog();
             }
@@ -185,9 +185,14 @@ namespace UI
         }
 
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {   
+        {
             Takip ta = new Takip();
             ta.ShowDialog();
+        }
+
+        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }
