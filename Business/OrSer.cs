@@ -32,6 +32,23 @@ namespace Business
             }).ToList();
         }
 
+        public async Task<OrEDTO> GetByHId(int ID)
+        {
+            var TEMP = await _dataSet.GetByHId(Convert.ToInt32(ID));
+            if (TEMP != null)
+            {
+                return new OrEDTO
+                {
+                    HastaId = TEMP.HastaId,
+                    DoktorId = TEMP.DoktorId
+                };
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public async Task<List<OrDTO>> GetByName(string NAME)
         {
             var TEMP = await _dataSet.GetByName(NAME);
@@ -54,18 +71,19 @@ namespace Business
             var TEMP = new Randevular
             {
                 DoktorId = DATA.DoktorId,
-                HastaId = DATA.HastaId,
+                HastaId = (int)DATA.HastaId,
                 RandevuDurumu = (byte) 1
             };
-
-            TEMP = await _dataSet.Save(TEMP);
-            return new OrDTO
-            {
-                Id = TEMP.Id,
-                HastaId = TEMP.HastaId,
-                DoktorId = TEMP.DoktorId,
-                RandevuDurumuId = TEMP.RandevuDurumu
-            };
+            
+                TEMP = await _dataSet.Save(TEMP);
+                return new OrDTO
+                {
+                    Id = TEMP.Id,
+                    HastaId = TEMP.HastaId,
+                    DoktorId = TEMP.DoktorId,
+                    RandevuDurumuId = TEMP.RandevuDurumu
+                };
+           
 
         }
     }

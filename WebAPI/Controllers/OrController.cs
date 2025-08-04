@@ -65,5 +65,16 @@ namespace WebAPI.Controllers
             return NoContent();
 
         }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetByHId(int id)
+        {
+            var R = await _Or.GetByHId(id);
+            if (R == null)
+            {
+                return NotFound();
+            }
+            return Ok(R);
+
+        }
     }
 }

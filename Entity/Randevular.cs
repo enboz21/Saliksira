@@ -8,7 +8,7 @@ public partial class Randevular : IEntity
 {
     public int Id { get; set; }
 
-    public int? HastaId { get; set; }
+    public int HastaId { get; set; }
 
     public int DoktorId { get; set; }
 

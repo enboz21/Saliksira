@@ -25,6 +25,12 @@ namespace DataAccsess
                     .ToListAsync();
         }
 
+        public async Task<Randevular> GetByHId(int hId)
+        {
+            return await _context.Set<Randevular>()
+                .FirstOrDefaultAsync(e => EF.Property<int>(e, "HastaId") == hId);
+        }
+
         public async Task<List<Randevular>> GetByName(string name)
         {
             return await _context.Set<Randevular>()

@@ -14,6 +14,7 @@ namespace Business.@interface
         Task<OrDTO> Save(OrEDTO DATA);
         Task<List<OrDTOE>> GetAll();
         Task<List<OrDTO>> GetByName(String NAME);
+        Task<OrEDTO> GetByHId(int ID);
         
     }
 }

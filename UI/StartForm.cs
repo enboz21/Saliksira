@@ -107,18 +107,27 @@ namespace UI
         }
         private async Task Add(int Id,int DrId)
         {
-            String apiUrl = baseUrl + "Or";
+            String apiUrl = baseUrl + "Or/"+Id;
 
             using (HttpClient client = new HttpClient()) 
             {
-                String DATA = JsonConvert.SerializeObject(new
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                string jsonString = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
                 {
-                    hastaId = Id,
-                    doktorId = DrId
-                });
-                HttpContent content = new StringContent(DATA, System.Text.Encoding.UTF8, "application/json");
+                    apiUrl = baseUrl + "Or";
+                    String DATA = JsonConvert.SerializeObject(new
+                    {
+                        hastaId = Id,
+                        doktorId = DrId
+                    });
+                    HttpContent content = new StringContent(DATA, System.Text.Encoding.UTF8, "application/json");
 
-                HttpResponseMessage respone = await client.PostAsync(apiUrl,content);
+                    HttpResponseMessage respone = await client.PostAsync(apiUrl, content);
+
+                }
+
+                    
             }
         }
     }
