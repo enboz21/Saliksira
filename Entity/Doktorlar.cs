@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Core;
+using System;
 using System.Collections.Generic;
-using Core;
+
 namespace Entity;
 
 public partial class Doktorlar : IEntity
@@ -17,6 +18,7 @@ public partial class Doktorlar : IEntity
 
     public bool AktifMi { get; set; }
 
-    public virtual ICollection<Randevular> Randevulars { get; set; } = new List<Randevular>();
     public virtual ICollection<Hastalar> Hastalars { get; set; } = new List<Hastalar>();
+
+    public virtual ICollection<Randevular> Randevulars { get; set; } = new List<Randevular>();
 }

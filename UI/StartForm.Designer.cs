@@ -30,15 +30,15 @@
         {
             panel1 = new Panel();
             panel2 = new Panel();
+            textEdit3 = new DevExpress.XtraEditors.TextEdit();
             textEdit2 = new DevExpress.XtraEditors.TextEdit();
             textEdit1 = new DevExpress.XtraEditors.TextEdit();
             Giris = new Label();
-            textEdit3 = new DevExpress.XtraEditors.TextEdit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)textEdit3.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textEdit2.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textEdit1.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)textEdit3.Properties).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -62,6 +62,25 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(862, 610);
             panel2.TabIndex = 6;
+            // 
+            // textEdit3
+            // 
+            textEdit3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            textEdit3.EditValue = "";
+            textEdit3.Location = new Point(12, 358);
+            textEdit3.Name = "textEdit3";
+            textEdit3.Properties.Appearance.BackColor = Color.White;
+            textEdit3.Properties.Appearance.Font = new Font("Times New Roman", 36F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            textEdit3.Properties.Appearance.ForeColor = Color.Red;
+            textEdit3.Properties.Appearance.Options.UseBackColor = true;
+            textEdit3.Properties.Appearance.Options.UseFont = true;
+            textEdit3.Properties.Appearance.Options.UseForeColor = true;
+            textEdit3.Properties.Appearance.Options.UseTextOptions = true;
+            textEdit3.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            textEdit3.Properties.UseMaskAsDisplayFormat = true;
+            textEdit3.RightToLeft = RightToLeft.No;
+            textEdit3.Size = new Size(838, 74);
+            textEdit3.TabIndex = 7;
             // 
             // textEdit2
             // 
@@ -117,25 +136,6 @@
             Giris.TextAlign = ContentAlignment.MiddleCenter;
             Giris.Click += Giris_Click;
             // 
-            // textEdit3
-            // 
-            textEdit3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textEdit3.EditValue = "";
-            textEdit3.Location = new Point(12, 358);
-            textEdit3.Name = "textEdit3";
-            textEdit3.Properties.Appearance.BackColor = Color.White;
-            textEdit3.Properties.Appearance.Font = new Font("Times New Roman", 36F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            textEdit3.Properties.Appearance.ForeColor = Color.Red;
-            textEdit3.Properties.Appearance.Options.UseBackColor = true;
-            textEdit3.Properties.Appearance.Options.UseFont = true;
-            textEdit3.Properties.Appearance.Options.UseForeColor = true;
-            textEdit3.Properties.Appearance.Options.UseTextOptions = true;
-            textEdit3.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            textEdit3.Properties.UseMaskAsDisplayFormat = true;
-            textEdit3.RightToLeft = RightToLeft.No;
-            textEdit3.Size = new Size(838, 74);
-            textEdit3.TabIndex = 7;
-            // 
             // StartForm
             // 
             AutoScaleDimensions = new SizeF(7F, 16F);
@@ -148,9 +148,9 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)textEdit3.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)textEdit2.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)textEdit1.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)textEdit3.Properties).EndInit();
             ResumeLayout(false);
         }
 

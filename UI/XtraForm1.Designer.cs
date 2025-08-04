@@ -34,8 +34,12 @@
             barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             Ptce = new DevExpress.XtraEditors.SimpleButton();
             PtD = new DevExpress.XtraEditors.SimpleButton();
             DrD = new DevExpress.XtraEditors.SimpleButton();
@@ -47,10 +51,6 @@
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             RightGridControl = new DevExpress.XtraGrid.GridControl();
             gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)splitContainerControl2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainerControl2.Panel1).BeginInit();
             splitContainerControl2.Panel1.SuspendLayout();
@@ -127,6 +127,22 @@
             barButtonItem3.Name = "barButtonItem3";
             barButtonItem3.ItemClick += DrRefresh_Click;
             // 
+            // barButtonItem4
+            // 
+            barButtonItem4.Caption = "Doktor Ekle";
+            barButtonItem4.Id = 4;
+            barButtonItem4.ImageOptions.Image = (Image)resources.GetObject("barButtonItem4.ImageOptions.Image");
+            barButtonItem4.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem4.ImageOptions.LargeImage");
+            barButtonItem4.Name = "barButtonItem4";
+            // 
+            // barButtonItem5
+            // 
+            barButtonItem5.Caption = "Doktor sil";
+            barButtonItem5.Id = 5;
+            barButtonItem5.ImageOptions.Image = (Image)resources.GetObject("barButtonItem5.ImageOptions.Image");
+            barButtonItem5.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem5.ImageOptions.LargeImage");
+            barButtonItem5.Name = "barButtonItem5";
+            // 
             // ribbonPage1
             // 
             ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup2, ribbonPageGroup3 });
@@ -137,6 +153,16 @@
             // 
             ribbonPageGroup1.ItemLinks.Add(barButtonItem3);
             ribbonPageGroup1.Name = "ribbonPageGroup1";
+            // 
+            // ribbonPageGroup2
+            // 
+            ribbonPageGroup2.ItemLinks.Add(barButtonItem4);
+            ribbonPageGroup2.Name = "ribbonPageGroup2";
+            // 
+            // ribbonPageGroup3
+            // 
+            ribbonPageGroup3.ItemLinks.Add(barButtonItem5);
+            ribbonPageGroup3.Name = "ribbonPageGroup3";
             // 
             // Ptce
             // 
@@ -268,32 +294,6 @@
             gridView2.Name = "gridView2";
             gridView2.OptionsBehavior.Editable = false;
             gridView2.OptionsView.ShowGroupPanel = false;
-            // 
-            // ribbonPageGroup2
-            // 
-            ribbonPageGroup2.ItemLinks.Add(barButtonItem4);
-            ribbonPageGroup2.Name = "ribbonPageGroup2";
-            // 
-            // ribbonPageGroup3
-            // 
-            ribbonPageGroup3.ItemLinks.Add(barButtonItem5);
-            ribbonPageGroup3.Name = "ribbonPageGroup3";
-            // 
-            // barButtonItem4
-            // 
-            barButtonItem4.Caption = "Doktor Ekle";
-            barButtonItem4.Id = 4;
-            barButtonItem4.ImageOptions.Image = (Image)resources.GetObject("barButtonItem4.ImageOptions.Image");
-            barButtonItem4.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem4.ImageOptions.LargeImage");
-            barButtonItem4.Name = "barButtonItem4";
-            // 
-            // barButtonItem5
-            // 
-            barButtonItem5.Caption = "Doktor sil";
-            barButtonItem5.Id = 5;
-            barButtonItem5.ImageOptions.Image = (Image)resources.GetObject("barButtonItem5.ImageOptions.Image");
-            barButtonItem5.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem5.ImageOptions.LargeImage");
-            barButtonItem5.Name = "barButtonItem5";
             // 
             // XtraForm1
             // 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Entity;
 
-public partial class Randevular :IEntity
+public partial class Randevular : IEntity
 {
     public int Id { get; set; }
 

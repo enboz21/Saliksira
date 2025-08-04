@@ -1,7 +1,6 @@
 ﻿using Core;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace Entity;
 
@@ -17,14 +16,17 @@ public partial class Hastalar : IEntity
 
     public DateOnly? DogumTarihi { get; set; }
 
-    public string? Cinsiyet { get; set; }
+    public byte? Cinsid { get; set; }
 
     public string? TelefonNumarasi { get; set; }
 
     public string? Adres { get; set; }
-    [Required]
+
     public int Doktorid { get; set; }
 
+    public virtual Cin? Cins { get; set; }
+
     public virtual Doktorlar Doktor { get; set; } = null!;
+
     public virtual ICollection<Randevular> Randevulars { get; set; } = new List<Randevular>();
 }

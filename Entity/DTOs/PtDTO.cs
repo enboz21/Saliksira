@@ -15,7 +15,8 @@ namespace Entity.DTOs
         public string TcNo { get; set; }
         public DateOnly? BirthDate { get; set; }
         public String PhoneNumber { get; set; }
-        public string Gender { get; set; }
+        public int Genderid { get; set; }
+        public String? Gender { get; set; }
         public string Address { get; set; }
         [Required]
         public int DrId { get; set; }

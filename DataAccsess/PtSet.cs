@@ -16,11 +16,13 @@ namespace DataAccsess
             return await _context.Set<Hastalar>()
                          .Where(e => EF.Property<string>(e, "TckimlikNo") == Tc)
                          .Include("Doktor")
+                         .Include("Cins")
                          .FirstOrDefaultAsync();
         }
         public async Task<List<Hastalar>> GetAll()
         {
             return await _context.Set<Hastalar>()
+                .Include("Cins")
                 .Include("Doktor").ToListAsync();
         }
 
@@ -28,6 +30,8 @@ namespace DataAccsess
         {
             return _context.Set<Hastalar>()
                 .Where(e => EF.Property<string>(e, "Name") == Name)
+                .Include("Cins")
+                .Include("Doktor")
                 .ToListAsync();
         }
     }

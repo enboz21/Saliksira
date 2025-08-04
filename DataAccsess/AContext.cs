@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Entity;
+
 namespace DataAccsess;
 
 public partial class AContext : DbContext
@@ -14,6 +15,8 @@ public partial class AContext : DbContext
         : base(options)
     {
     }
+
+    public virtual DbSet<Cin> Cins { get; set; }
 
     public virtual DbSet<Doktorlar> Doktorlars { get; set; }
 
@@ -29,6 +32,19 @@ public partial class AContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Cin>(entity =>
+        {
+            entity.ToTable("cins");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedOnAdd()
+                .HasColumnName("id");
+            entity.Property(e => e.Cinsiyet)
+                .HasMaxLength(20)
+                .IsFixedLength()
+                .HasColumnName("cinsiyet");
+        });
+
         modelBuilder.Entity<Doktorlar>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Doktorla__77AFB941A65710E5");
@@ -72,7 +88,7 @@ public partial class AContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Adres).HasMaxLength(250);
-            entity.Property(e => e.Cinsiyet).HasMaxLength(25);
+            entity.Property(e => e.Cinsid).HasColumnName("cinsid");
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .HasColumnName("name");
@@ -81,6 +97,15 @@ public partial class AContext : DbContext
                 .HasMaxLength(11)
                 .HasColumnName("TCKimlikNo");
             entity.Property(e => e.TelefonNumarasi).HasMaxLength(15);
+
+            entity.HasOne(d => d.Cins).WithMany(p => p.Hastalars)
+                .HasForeignKey(d => d.Cinsid)
+                .HasConstraintName("FK_Hastalar_cins");
+
+            entity.HasOne(d => d.Doktor).WithMany(p => p.Hastalars)
+                .HasForeignKey(d => d.Doktorid)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Hastalar_Doktorlar");
         });
 
         modelBuilder.Entity<Randevular>(entity =>

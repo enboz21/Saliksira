@@ -30,7 +30,8 @@ namespace Business
                 Surname = x.Soyad,
                 TcNo = x.TckimlikNo,
                 BirthDate =x.DogumTarihi,
-                Gender = x.Cinsiyet,
+                Genderid = x.Cins.Id,
+                Gender = x.Cins.Cinsiyet,
                 Address = x.Adres,
                 DrId =x.Doktor.Id,
                 DrName =x.Doktor.Name,
@@ -43,11 +44,13 @@ namespace Business
             var TEMP = await _dataSet.GetByName(NAME);
             var RET = TEMP.Select(x => new PtDTO
             {
+                Id = x.Id,
                 Name = x.Name,
                 Surname = x.Soyad,
                 TcNo = x.TckimlikNo,
                 BirthDate = x.DogumTarihi,
-                Gender = x.Cinsiyet,
+                Genderid = x.Cins.Id,
+                Gender = x.Cins.Cinsiyet,
                 Address = x.Adres,
                 DrId = x.Doktor.Id,
                 DrName = x.Doktor.Name,
@@ -62,11 +65,13 @@ namespace Business
             var TEMP = await _dataSet.GetByTc(TC);
             var RET = new PtDTO
             {
+                Id = TEMP.Id,
                 Name = TEMP.Name,
                 Surname = TEMP.Soyad,
                 TcNo = TEMP.TckimlikNo,
                 BirthDate = TEMP.DogumTarihi,
-                Gender = TEMP.Cinsiyet,
+                Genderid = TEMP.Cins.Id,
+                Gender = TEMP.Cins.Cinsiyet,
                 Address = TEMP.Adres,
                 DrId = TEMP.Doktor.Id,
                 DrName = TEMP.Doktor.Name,
@@ -82,7 +87,7 @@ namespace Business
                 Soyad = DATA.Surname,
                 TckimlikNo = DATA.TcNo,
                 DogumTarihi = DATA.BirthDate,
-                Cinsiyet = DATA.Gender,
+                Cinsid = (byte)DATA.Genderid,
                 TelefonNumarasi = DATA.PhoneNumber,
                 Adres = DATA.Address,
                 Doktorid =DATA.DrId,
