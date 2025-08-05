@@ -24,5 +24,12 @@ namespace DataAccsess
                 .Where(e => EF.Property<string>(e, "Name") == Name)
                 .ToListAsync();
         }
+
+        public Task<List<Doktorlar>> GetByVa()
+        {
+            return _context.Set<Doktorlar>()
+                .Where(e => EF.Property<bool>(e, "AktifMi") == true)
+                .ToListAsync();
+        }
     }
 }

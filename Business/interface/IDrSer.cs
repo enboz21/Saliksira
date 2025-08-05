@@ -15,5 +15,6 @@ namespace Business.@interface
         Task<List<DrDTO>> GetByName(string name);
         Task<DrDTO> Save(DrDTO dr);
         Task<DrDTO> Update(DrDTO dr);
+        Task<List<DrDTO>> GetByVa();
     }
 }

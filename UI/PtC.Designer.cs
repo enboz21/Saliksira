@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class PtCE
+    partial class PtC
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PtCE));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PtC));
             simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             label4 = new Label();
             label3 = new Label();
@@ -210,7 +210,7 @@
             lookUpEdit2.Size = new Size(155, 22);
             lookUpEdit2.TabIndex = 30;
             // 
-            // PtCE
+            // PtC
             // 
             ActiveGlowColor = Color.FromArgb(128, 64, 0);
             Appearance.BackColor = Color.Cyan;
@@ -239,7 +239,7 @@
             Controls.Add(textEdit1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             InactiveGlowColor = Color.FromArgb(192, 192, 0);
-            Name = "PtCE";
+            Name = "PtC";
             Text = "PtCE";
             Load += PtCE_Load;
             ((System.ComponentModel.ISupportInitialize)textEdit3.Properties).EndInit();

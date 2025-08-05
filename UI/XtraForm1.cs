@@ -161,7 +161,7 @@ namespace UI
 
         private void Ptce_Click(object sender, EventArgs e)
         {
-            using (PtCE ptce = new PtCE())
+            using (PtC ptce = new PtC())
             {
                 ptce.ShowDialog();
             }
@@ -192,7 +192,21 @@ namespace UI
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            object selectedRow = gridView1.GetFocusedRowCellValue("Id");
+            using (DrE drE = new DrE(Convert.ToInt32(selectedRow)))
+            {
+                drE.ShowDialog();
+            }
 
+        }
+
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            object selectedRow = gridView2.GetFocusedRowCellValue("Id");
+            using (PtE ptE = new PtE(Convert.ToInt32(selectedRow)))
+            {
+                ptE.ShowDialog();
+            }
         }
     }
 }

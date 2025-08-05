@@ -57,6 +57,7 @@
             simpleButton1.Size = new Size(35, 28);
             simpleButton1.TabIndex = 19;
             simpleButton1.Text = "\r\n";
+            simpleButton1.Click += simpleButton1_Click;
             // 
             // ChAct
             // 
@@ -155,6 +156,7 @@
             Controls.Add(textEdit1);
             Name = "DrE";
             Text = "DrE";
+            Load += DrE_Load;
             ((System.ComponentModel.ISupportInitialize)ChAct.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)textEdit4.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)textEdit3.Properties).EndInit();

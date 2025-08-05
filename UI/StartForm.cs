@@ -33,28 +33,29 @@ namespace UI
             {
                 // UI'ın bloke olmaması için await kullanıyoruz.
                 string[] hastaAdi = await AdAsync(textEdit1.Text);
+                if (hastaAdi!=null) {
+                    try
+                    {
+                        // Eğer hasta adı başarıyla alındıysa, işlemleri başlat.
 
-                try
-                {
-                    // Eğer hasta adı başarıyla alındıysa, işlemleri başlat.
+                        // Bu satır await sonrasında otomatik olarak UI thread'inde çalışır.
+                        textEdit2.Text = hastaAdi[0] + " Hoşgeldiniz";
+                        textEdit3.Text = "Doktorunuz : " + hastaAdi[1];
+                        Add(Convert.ToInt32(hastaAdi[3]), Convert.ToInt32(hastaAdi[2]));
+                        panel2.Visible = true;
 
-                    // Bu satır await sonrasında otomatik olarak UI thread'inde çalışır.
-                    textEdit2.Text = hastaAdi[0] + " Hoşgeldiniz";
-                    textEdit3.Text = "Doktorunuz : " + hastaAdi[1];
-                    Add(Convert.ToInt32(hastaAdi[3]), Convert.ToInt32(hastaAdi[2]));
-                    panel2.Visible = true;
+                        // 3 saniye bekle. Bu süre boyunca UI donmaz.
+                        await Task.Delay(3000);
 
-                    // 3 saniye bekle. Bu süre boyunca UI donmaz.
-                    await Task.Delay(3000);
-
-                    // Gecikme bittikten sonra, bu satırlar da UI thread'inde çalışacaktır.
-                    panel2.Visible = false;
+                        // Gecikme bittikten sonra, bu satırlar da UI thread'inde çalışacaktır.
+                        panel2.Visible = false;
 
 
-                }
-                catch (Exception s)
-                {
+                    }
+                    catch (Exception s)
+                    {
 
+                    }
                 }
                 textEdit1.EditValue = null;
                 textEdit1.Focus();
@@ -79,12 +80,13 @@ namespace UI
                         PtDTO ptDto = JsonConvert.DeserializeObject<PtDTO>(jsonString);
                         String[] X = new string[4];
 
+                        
 
                         X[0] = ptDto.Name;
                         X[1] = ptDto.DrName;
                         X[2] = Convert.ToString(ptDto.DrId);
                         X[3] = Convert.ToString(ptDto.Id);
-
+                        
 
 
                         return X; // PtDTO'dan ismi alıyoruz.

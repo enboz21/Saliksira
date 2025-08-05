@@ -46,6 +46,21 @@ namespace Business
             return RET;
         }
 
+        public async Task<List<DrDTO>> GetByVa()
+        {
+            var TEMP = await _dataSet.GetByVa();
+            return TEMP.Select(X => new DrDTO
+            {
+                Id = X.Id,
+                Name = X.Name,
+                Surname = X.Soyad,
+                PhoneNumber = X.TelefonNumarasi,
+                Specialization = X.UzmanlikAlani,
+                vailability = X.AktifMi
+            }).ToList();
+            
+        }
+
         public async Task<DrDTO> Save(DrDTO dr)
         {
             var TEMP = new Doktorlar

@@ -15,11 +15,11 @@ using System.Windows.Controls;
 
 namespace UI
 {
-    public partial class PtCE : DevExpress.XtraEditors.XtraForm
+    public partial class PtC : DevExpress.XtraEditors.XtraForm
     {
         static string baseUrl = "https://localhost:44352/api/";
 
-        public PtCE()
+        public PtC()
         {
             InitializeComponent();
             

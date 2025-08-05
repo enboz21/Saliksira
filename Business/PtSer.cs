@@ -104,17 +104,33 @@ namespace Business
 
         }
 
-        public Task<PtDTO> Update(PtDTO DATA)
+        public async Task<PtDTO> Update(PtDTO DATA)
         {
             var TEMP = new Hastalar
             {
                 Id = DATA.Id,
                 Name = DATA.Name,
-                Soyad=DATA.Surname,
-                TckimlikNo=DATA.TcNo,
-                DogumTarihi=DATA.BirthDate,
-
-            }
+                Soyad = DATA.Surname,
+                TckimlikNo = DATA.TcNo,
+                DogumTarihi = DATA.BirthDate,
+                Cinsid = (byte)DATA.Genderid,
+                TelefonNumarasi = DATA.PhoneNumber,
+                Adres = DATA.Address,
+                Doktorid = (byte)DATA.DrId
+            };
+            TEMP = await _dataSet.Update(TEMP);
+            return new PtDTO
+            {
+                Id = TEMP.Id,
+                Name = TEMP.Name,
+                Surname = TEMP.Soyad,
+                TcNo = TEMP.TckimlikNo,
+                BirthDate = TEMP.DogumTarihi,
+                Genderid = (int)TEMP.Cinsid,
+                PhoneNumber = TEMP.TelefonNumarasi,
+                Address = TEMP.Adres,
+                DrId = TEMP.Doktorid
+            };
         }
     }
 }

@@ -83,6 +83,10 @@ namespace WebAPI.Controllers
             DrDTO dr = await _drDTOService.Update(doktor);
             return CreatedAtAction("Get", dr);
         }
-
+        [HttpGet("va")]
+        public async Task<IActionResult> GetByVa()
+        {
+            return Ok(await _drDTOService.GetByVa());
+        }
     }
 }
