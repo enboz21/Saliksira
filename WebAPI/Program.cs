@@ -1,11 +1,7 @@
 using Business;
 using Business.@interface;
-using Core;
 using DataAccsess;
-using DataAccsess.abstrack;
 using DataAccsess.Interface;
-using Entity;
-using Entity.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddScoped<IDrSet,DrSet>();
+builder.Services.AddScoped<IDrSet, DrSet>();
 builder.Services.AddScoped<IPtSet, PtSet>();
 builder.Services.AddScoped<IOrSet, OrSet>();
 builder.Services.AddScoped<IMtSet, MtSet>();

@@ -1,5 +1,4 @@
 ﻿using Business.@interface;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -18,7 +17,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _geSer.GetAll() );
+            return Ok(await _geSer.GetAll());
         }
     }
 }

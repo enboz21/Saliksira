@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Entity;
 using Microsoft.EntityFrameworkCore;
-using Entity;
 
 namespace DataAccsess;
 

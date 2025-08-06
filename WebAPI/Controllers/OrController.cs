@@ -1,8 +1,4 @@
-﻿using Business;
-using Business.@interface;
-using Core;
-using DataAccsess;
-using Entity;
+﻿using Business.@interface;
 using Entity.DTOs;
 using Microsoft.AspNetCore.Mvc;
 

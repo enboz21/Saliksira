@@ -1,16 +1,6 @@
-﻿using DevExpress.XtraEditors;
-using Entity.DTOs;
+﻿using Entity.DTOs;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace UI
 {
@@ -31,7 +21,7 @@ namespace UI
         {
             object selectedRow = gridView1.GetFocusedRowCellValue("Id");
 
-            string apiUrl = baseUrl + "Or/"+selectedRow;
+            string apiUrl = baseUrl + "Or/" + selectedRow;
             using (HttpClient client = new HttpClient())
             {
                 HttpResponseMessage response = await client.DeleteAsync(apiUrl);
@@ -56,7 +46,7 @@ namespace UI
                     gridControl1.DataSource = null;
                     // API'den başarısız bir cevap gelirse hata mesajını göster
                     string errorContent = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show($"yüklenirken bir hata oluştu. Durum Kodu: {response.StatusCode}\nMesaj: {errorContent}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($" hasta kalmadı", "Bildiri", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

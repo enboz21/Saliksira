@@ -1,14 +1,7 @@
-﻿using Core;
-using DataAccsess.abstrack;
+﻿using DataAccsess.abstrack;
 using DataAccsess.Interface;
 using Entity;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core;
 
 namespace DataAccsess
 {

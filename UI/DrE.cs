@@ -1,5 +1,4 @@
-﻿using DevExpress.ClipboardSource.SpreadsheetML;
-using Entity;
+﻿using Entity;
 using Entity.DTOs;
 using Newtonsoft.Json;
 using System.Net.Http;
@@ -67,11 +66,11 @@ namespace UI
                 PhoneNumber = textEdit4.Text,
                 vailability = ChAct.Checked
             };
-            using(HttpClient client = new HttpClient())
+            using (HttpClient client = new HttpClient())
             {
                 String DATA = JsonConvert.SerializeObject(TEMP);
                 HttpContent content = new StringContent(DATA, System.Text.Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.PutAsync(apiUrl,content);
+                HttpResponseMessage response = await client.PutAsync(apiUrl, content);
                 if (response.IsSuccessStatusCode)
                 {
 

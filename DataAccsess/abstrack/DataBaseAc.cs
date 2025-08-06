@@ -1,11 +1,5 @@
-﻿using Entity;
+﻿using Core;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core;
 
 namespace DataAccsess.abstrack
 {
@@ -27,7 +21,7 @@ namespace DataAccsess.abstrack
 
         public async Task<List<T>> GetAll()
         {
-                return await _context.Set<T>().ToListAsync();
+            return await _context.Set<T>().ToListAsync();
         }
 
         public Task<T> GetById(int Id)

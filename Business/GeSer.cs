@@ -1,14 +1,8 @@
 ﻿using Business.abstrack;
 using Business.@interface;
-using Core;
 using DataAccsess.Interface;
 using Entity;
 using Entity.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business
 {

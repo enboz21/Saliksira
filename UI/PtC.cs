@@ -1,17 +1,6 @@
-﻿using DevExpress.XtraEditors;
-using Entity;
-using Entity.DTOs;
+﻿using Entity.DTOs;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace UI
 {
@@ -22,7 +11,7 @@ namespace UI
         public PtC()
         {
             InitializeComponent();
-            
+
         }
 
 
@@ -50,7 +39,7 @@ namespace UI
 
             return cins;
         }
-            public async Task<List<DrDTO>> Getdoktorlar()
+        public async Task<List<DrDTO>> Getdoktorlar()
         {
             string jsonResponse = "";
             using (HttpClient client = new HttpClient())
@@ -134,7 +123,7 @@ namespace UI
             }
         }
 
-        private async void  PtCE_Load(object sender, EventArgs e)
+        private async void PtCE_Load(object sender, EventArgs e)
         {
             List<GeDTO> cinsiyetler = await GetCinsiyetler();
 

@@ -1,10 +1,5 @@
-﻿using Business;
-using Business.@interface;
-using Core;
-using DataAccsess;
-using Entity;
+﻿using Business.@interface;
 using Entity.DTOs;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers

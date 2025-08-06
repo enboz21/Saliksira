@@ -1,14 +1,8 @@
 ﻿using Business.abstrack;
 using Business.@interface;
-using Core;
 using DataAccsess.Interface;
 using Entity;
 using Entity.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business
 {
@@ -29,13 +23,13 @@ namespace Business
                 Name = x.Name,
                 Surname = x.Soyad,
                 TcNo = x.TckimlikNo,
-                BirthDate =x.DogumTarihi,
-                PhoneNumber=x.TelefonNumarasi,
+                BirthDate = x.DogumTarihi,
+                PhoneNumber = x.TelefonNumarasi,
                 Genderid = x.Cins.Id,
                 Gender = x.Cins.Cinsiyet,
                 Address = x.Adres,
-                DrId =x.Doktor.Id,
-                DrName =x.Doktor.Name,
+                DrId = x.Doktor.Id,
+                DrName = x.Doktor.Name,
                 Drsoyad = x.Doktor.Soyad
             }).ToList();
         }
@@ -84,11 +78,12 @@ namespace Business
             }
             return null;
         }
-            
+
 
         public async Task<PtDTO> Save(PtDTO DATA)
         {
-            var TEMP = new Hastalar{
+            var TEMP = new Hastalar
+            {
                 Name = DATA.Name,
                 Soyad = DATA.Surname,
                 TckimlikNo = DATA.TcNo,
@@ -96,7 +91,7 @@ namespace Business
                 Cinsid = (byte)DATA.Genderid,
                 TelefonNumarasi = DATA.PhoneNumber,
                 Adres = DATA.Address,
-                Doktorid =DATA.DrId,
+                Doktorid = DATA.DrId,
             };
             TEMP = await _dataSet.Save(TEMP);
             DATA.Id = TEMP.Id;

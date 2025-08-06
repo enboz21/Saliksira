@@ -1,11 +1,6 @@
-﻿using Business;
-using DataAccsess;
-using Entity;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Core;
+﻿using Business.@interface;
 using Entity.DTOs;
-using Business.@interface;
+using Microsoft.AspNetCore.Mvc;
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -54,6 +49,6 @@ namespace WebAPI.Controllers
             await _mtS.DeleteService(id);
             return NoContent();
         }
-        
+
     }
 }

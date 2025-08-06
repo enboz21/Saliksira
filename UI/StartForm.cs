@@ -33,7 +33,8 @@ namespace UI
             {
                 // UI'ın bloke olmaması için await kullanıyoruz.
                 string[] hastaAdi = await AdAsync(textEdit1.Text);
-                if (hastaAdi!=null) {
+                if (hastaAdi != null)
+                {
                     try
                     {
                         // Eğer hasta adı başarıyla alındıysa, işlemleri başlat.
@@ -80,13 +81,13 @@ namespace UI
                         PtDTO ptDto = JsonConvert.DeserializeObject<PtDTO>(jsonString);
                         String[] X = new string[4];
 
-                        
+
 
                         X[0] = ptDto.Name;
                         X[1] = ptDto.DrName;
                         X[2] = Convert.ToString(ptDto.DrId);
                         X[3] = Convert.ToString(ptDto.Id);
-                        
+
 
 
                         return X; // PtDTO'dan ismi alıyoruz.

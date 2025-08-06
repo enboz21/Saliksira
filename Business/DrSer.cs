@@ -58,7 +58,7 @@ namespace Business
                 Specialization = X.UzmanlikAlani,
                 vailability = X.AktifMi
             }).ToList();
-            
+
         }
 
         public async Task<DrDTO> Save(DrDTO dr)
@@ -95,8 +95,8 @@ namespace Business
 
             return new DrDTO
             {
-                Id= TEMP.Id,
-                Name= TEMP.Name,
+                Id = TEMP.Id,
+                Name = TEMP.Name,
                 Surname = TEMP.Soyad,
                 Specialization = TEMP.UzmanlikAlani,
                 PhoneNumber = TEMP.TelefonNumarasi,

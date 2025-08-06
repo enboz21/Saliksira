@@ -1,16 +1,6 @@
-﻿
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Storage;
-using System.Threading.Tasks;
-using DataAccsess;
-using Entity;
-using Business;
-using Core;
+﻿using Business.@interface;
 using Entity.DTOs;
-using DataAccsess.Interface;
-using Business.@interface;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
@@ -49,7 +39,7 @@ namespace WebAPI.Controllers
                 return BadRequest("Invalid data.");
             }
             DrDTO dr = await _drDTOService.Save(doktor);
-            return CreatedAtAction("Get",dr);
+            return CreatedAtAction("Get", dr);
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)

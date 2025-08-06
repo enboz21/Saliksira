@@ -32,7 +32,6 @@
             gridControl1 = new DevExpress.XtraGrid.GridControl();
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             onay = new DevExpress.XtraEditors.SimpleButton();
-            simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
             SuspendLayout();
@@ -62,16 +61,6 @@
             onay.Text = "Tamamlandı";
             onay.Click += onay_Click;
             // 
-            // simpleButton2
-            // 
-            simpleButton2.ImageOptions.Image = (Image)resources.GetObject("simpleButton2.ImageOptions.Image");
-            simpleButton2.Location = new Point(12, 124);
-            simpleButton2.Name = "simpleButton2";
-            simpleButton2.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            simpleButton2.Size = new Size(153, 80);
-            simpleButton2.TabIndex = 2;
-            simpleButton2.Text = "Tamamlanamadı";
-            // 
             // Takip
             // 
             Appearance.BackColor = Color.Lime;
@@ -79,7 +68,6 @@
             AutoScaleDimensions = new SizeF(7F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(672, 712);
-            Controls.Add(simpleButton2);
             Controls.Add(onay);
             Controls.Add(gridControl1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -96,6 +84,5 @@
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.SimpleButton onay;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
     }
 }

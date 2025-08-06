@@ -313,7 +313,6 @@
             RightGridControl.Size = new Size(548, 261);
             RightGridControl.TabIndex = 1;
             RightGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView2 });
-            RightGridControl.Click += RightGridControl_Click;
             // 
             // gridView2
             // 
@@ -334,7 +333,6 @@
             Name = "XtraForm1";
             Text = "XtraForm1";
             FormClosed += XtraForm1_FormClosed;
-            Load += XtraForm1_Load;
             ((System.ComponentModel.ISupportInitialize)splitContainerControl2.Panel1).EndInit();
             splitContainerControl2.Panel1.ResumeLayout(false);
             splitContainerControl2.Panel1.PerformLayout();
