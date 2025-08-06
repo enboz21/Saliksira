@@ -137,7 +137,7 @@
             simpleButton1.Text = "\r\n";
             simpleButton1.Click += Conf_Click;
             // 
-            // DrCE
+            // DrC
             // 
             ActiveGlowColor = Color.FromArgb(255, 128, 128);
             Appearance.BackColor = Color.FromArgb(255, 255, 128);
@@ -160,7 +160,7 @@
             Controls.Add(textEdit2);
             Controls.Add(textEdit1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Name = "DrCE";
+            Name = "DrC";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DrCE";
             ((System.ComponentModel.ISupportInitialize)textEdit1.Properties).EndInit();

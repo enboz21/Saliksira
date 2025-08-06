@@ -13,7 +13,7 @@ namespace UI
             panel2.Visible = false;
         }
 
-        static string baseUrl = "https://localhost:44352/api/";
+        private const string baseUrl = Program.BaseUrl;
         private void label1_Click(object sender, EventArgs e)
         {
             // Bu metot boş bırakılabilir veya ihtiyaca göre doldurulabilir.

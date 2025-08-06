@@ -7,7 +7,6 @@ namespace UI
 {
     public partial class DrE : DevExpress.XtraEditors.XtraForm
     {
-        static string baseUrl = "https://localhost:44352/api/";
         private int _id;
         private readonly IUIDrSer _uIDrSer;
         private readonly HttpClient _httpClient;
@@ -56,6 +55,11 @@ namespace UI
                 MessageBox.Show($"Kişi kaydı güncellenirken hata \n : {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
 
         }
     }

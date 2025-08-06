@@ -7,7 +7,6 @@ namespace UI
 {
     public partial class XtraForm1 : DevExpress.XtraEditors.XtraForm
     {
-        static string baseUrl = "https://localhost:44352/api/";
         private readonly IUIDrSer _uIDrSer;
         private readonly IUIPtSer _uIPtSer;
         private readonly HttpClient _httpClient;

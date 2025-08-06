@@ -8,7 +8,7 @@ namespace UI.Core
     internal class UIGeSer : IUIGeSer
     {
         private readonly HttpClient _httpClient;
-        private const string BaseUrl = "https://localhost:44352/api/Ge";
+        private const string BaseUrl = Program.BaseUrl+"/Ge";
         public UIGeSer(HttpClient httpClient)
         {
             _httpClient = httpClient;

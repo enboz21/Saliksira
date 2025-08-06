@@ -7,7 +7,6 @@ namespace UI
 {
     public partial class PtE : DevExpress.XtraEditors.XtraForm
     {
-        static string baseUrl = "https://localhost:44352/api/";
         private int _id;
         private readonly IUIPtSer _uIPtSer;
         private readonly HttpClient _httpClient;
