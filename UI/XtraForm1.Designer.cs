@@ -47,13 +47,6 @@
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             LeftGridControl = new DevExpress.XtraGrid.GridControl();
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -213,59 +206,31 @@
             // 
             // ribbonPage1
             // 
-            ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup2, ribbonPageGroup3, ribbonPageGroup4, ribbonPageGroup5, ribbonPageGroup6, ribbonPageGroup7, ribbonPageGroup8, ribbonPageGroup9, ribbonPageGroup10 });
+            ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup2, ribbonPageGroup3 });
             ribbonPage1.Name = "ribbonPage1";
             ribbonPage1.Text = "ribbonPage1";
             // 
             // ribbonPageGroup1
             // 
             ribbonPageGroup1.ItemLinks.Add(barButtonItem3);
+            ribbonPageGroup1.ItemLinks.Add(barButtonItem4);
+            ribbonPageGroup1.ItemLinks.Add(barButtonItem5);
+            ribbonPageGroup1.ItemLinks.Add(barButtonItem11);
             ribbonPageGroup1.Name = "ribbonPageGroup1";
             // 
             // ribbonPageGroup2
             // 
-            ribbonPageGroup2.ItemLinks.Add(barButtonItem4);
+            ribbonPageGroup2.ItemLinks.Add(barButtonItem6);
+            ribbonPageGroup2.ItemLinks.Add(barButtonItem7);
+            ribbonPageGroup2.ItemLinks.Add(barButtonItem8);
+            ribbonPageGroup2.ItemLinks.Add(barButtonItem12);
             ribbonPageGroup2.Name = "ribbonPageGroup2";
             // 
             // ribbonPageGroup3
             // 
-            ribbonPageGroup3.ItemLinks.Add(barButtonItem5);
+            ribbonPageGroup3.ItemLinks.Add(barButtonItem9);
+            ribbonPageGroup3.ItemLinks.Add(barButtonItem10);
             ribbonPageGroup3.Name = "ribbonPageGroup3";
-            // 
-            // ribbonPageGroup4
-            // 
-            ribbonPageGroup4.ItemLinks.Add(barButtonItem6);
-            ribbonPageGroup4.Name = "ribbonPageGroup4";
-            // 
-            // ribbonPageGroup5
-            // 
-            ribbonPageGroup5.ItemLinks.Add(barButtonItem7);
-            ribbonPageGroup5.Name = "ribbonPageGroup5";
-            // 
-            // ribbonPageGroup6
-            // 
-            ribbonPageGroup6.ItemLinks.Add(barButtonItem8);
-            ribbonPageGroup6.Name = "ribbonPageGroup6";
-            // 
-            // ribbonPageGroup7
-            // 
-            ribbonPageGroup7.ItemLinks.Add(barButtonItem9);
-            ribbonPageGroup7.Name = "ribbonPageGroup7";
-            // 
-            // ribbonPageGroup8
-            // 
-            ribbonPageGroup8.ItemLinks.Add(barButtonItem10);
-            ribbonPageGroup8.Name = "ribbonPageGroup8";
-            // 
-            // ribbonPageGroup9
-            // 
-            ribbonPageGroup9.ItemLinks.Add(barButtonItem11);
-            ribbonPageGroup9.Name = "ribbonPageGroup9";
-            // 
-            // ribbonPageGroup10
-            // 
-            ribbonPageGroup10.ItemLinks.Add(barButtonItem12);
-            ribbonPageGroup10.Name = "ribbonPageGroup10";
             // 
             // splitContainerControl1
             // 
@@ -375,16 +340,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
     }
 }

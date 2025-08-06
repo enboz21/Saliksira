@@ -1,19 +1,21 @@
 ﻿using Entity.DTOs;
 using System.Net.Http;
 using UI.Core;
+using UI.Core.Interface;
 
 namespace UI
 {
     public partial class XtraForm1 : DevExpress.XtraEditors.XtraForm
     {
         static string baseUrl = "https://localhost:44352/api/";
-        private readonly UIDrSer _uIDrSer;
-        private readonly UIPtSer _uIPtSer;
+        private readonly IUIDrSer _uIDrSer;
+        private readonly IUIPtSer _uIPtSer;
+        private readonly HttpClient _httpClient;
         public XtraForm1()
         {
-            var httpClient = new HttpClient();
-            _uIDrSer = new UIDrSer(httpClient);
-            _uIPtSer = new UIPtSer(httpClient);
+            var _httpClient = new HttpClient();
+            _uIDrSer = new UIDrSer(_httpClient);
+            _uIPtSer = new UIPtSer(_httpClient);
             InitializeComponent();
             DrRef();
             PtRef();
@@ -66,7 +68,7 @@ namespace UI
             {
                 _uIDrSer.Drdelete(Convert.ToInt32(gridView1.GetFocusedRowCellValue("Id")));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"doktor silinirken hata {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -79,7 +81,7 @@ namespace UI
             {
                 _uIPtSer.Ptdelete(Convert.ToInt32(gridView2.GetFocusedRowCellValue("Id")));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Hastalar silinirken hata {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

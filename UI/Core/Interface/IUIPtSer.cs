@@ -1,9 +1,4 @@
 ﻿using Entity.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UI.Core.Interface
 {
@@ -11,5 +6,8 @@ namespace UI.Core.Interface
     {
         Task<List<PtDTO>> PtListAll();
         void Ptdelete(int ID);
+        Task<PtDTO> PtId(int ID);
+        void Ptup(PtDTO TEMP);
+        void PtPost(PtDTO TEMP);
     }
 }

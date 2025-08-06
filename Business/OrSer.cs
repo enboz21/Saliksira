@@ -69,7 +69,7 @@ namespace Business
             {
                 DoktorId = DATA.DoktorId,
                 HastaId = (int)DATA.HastaId,
-                RandevuDurumu = (byte)1
+                RandevuDurumu = 1
             };
 
             TEMP = await _dataSet.Save(TEMP);
