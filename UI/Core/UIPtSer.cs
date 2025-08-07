@@ -9,7 +9,7 @@ namespace UI.Core
     internal class UIPtSer : IUIPtSer
     {
         private readonly HttpClient _httpClient;
-        private static string BaseUrl = Program.BaseUrl+"Pt";
+        private static string BaseUrl = Program.BaseUrl + "Pt";
         public UIPtSer(HttpClient httpClient)
         {
             _httpClient = httpClient;
@@ -116,6 +116,33 @@ namespace UI.Core
                 string errorContent = await response.Content.ReadAsStringAsync();
                 throw new HttpRequestException($"Yeni kayıt eklerken API taraflı hata: {response.StatusCode} - {errorContent} ");
             }
+        }
+
+        public async Task<string[]> Add(String TC)
+        {
+            string apiUrl = BaseUrl + "/by-tc/" + TC;
+
+
+            HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
+            string jsonString = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                PtDTO ptDto = JsonConvert.DeserializeObject<PtDTO>(jsonString);
+                String[] X = new string[4];
+
+
+
+                X[0] = ptDto.Name;
+                X[1] = ptDto.DrName;
+                X[2] = Convert.ToString(ptDto.DrId);
+                X[3] = Convert.ToString(ptDto.Id);
+
+
+
+                return X; // PtDTO'dan ismi alıyoruz.
+            }
+            return null;
         }
     }
 }
