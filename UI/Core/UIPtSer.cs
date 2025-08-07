@@ -9,7 +9,7 @@ namespace UI.Core
     internal class UIPtSer : IUIPtSer
     {
         private readonly HttpClient _httpClient;
-        private const string BaseUrl = Program.BaseUrl+"/Pt";
+        private static string BaseUrl = Program.BaseUrl+"Pt";
         public UIPtSer(HttpClient httpClient)
         {
             _httpClient = httpClient;

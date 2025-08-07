@@ -9,7 +9,7 @@ namespace UI.Core
     internal class UIDrSer : IUIDrSer
     {
         private readonly HttpClient _httpClient;
-        private const string BaseUrl = Program.BaseUrl+"/Dr";
+        private static string BaseUrl = Program.BaseUrl+"Dr";
         public UIDrSer(HttpClient httpClient)
         {
             _httpClient = httpClient;

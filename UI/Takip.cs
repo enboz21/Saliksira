@@ -6,7 +6,7 @@ namespace UI
 {
     public partial class Takip : DevExpress.XtraEditors.XtraForm
     {
-        private const string baseUrl = Program.BaseUrl+"/";
+        private static string baseUrl = Program.BaseUrl;
         public Takip()
         {
             InitializeComponent();

@@ -8,7 +8,7 @@ namespace UI
 {
     public partial class PtC : DevExpress.XtraEditors.XtraForm
     {
-        private const string baseUrl = Program.BaseUrl+"/";
+        private static string baseUrl = Program.BaseUrl;
         private readonly IUIPtSer _uIPtSer;
         private readonly IUIGeSer _uIGeSer;
         private readonly IUIDrSer _uIDrSer;
@@ -23,52 +23,6 @@ namespace UI
 
         }
 
-
-        public async Task<List<GeDTO>> GetCinsiyetler()
-        {
-            string jsonResponse = "";
-            using (HttpClient client = new HttpClient())
-            {
-                string apiUrl = baseUrl + "Ge";
-                HttpResponseMessage response = await client.GetAsync(apiUrl);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    jsonResponse = await response.Content.ReadAsStringAsync();
-
-                }
-                else
-                {
-                    // API'den başarısız bir cevap gelirse hata mesajını göster
-                    string errorContent = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show($"yüklenirken bir hata oluştu. Durum Kodu: {response.StatusCode}\nMesaj: {errorContent}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            List<GeDTO> cins = JsonConvert.DeserializeObject<List<GeDTO>>(jsonResponse);
-
-            return cins;
-        }
-        public async Task<List<DrDTO>> Getdoktorlar()
-        {
-            string jsonResponse = "";
-            using (HttpClient client = new HttpClient())
-            {
-                string apiUrl = baseUrl + "Dr";
-                HttpResponseMessage response = await client.GetAsync(apiUrl);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    jsonResponse = await response.Content.ReadAsStringAsync();
-                }
-                else
-                {
-                    string errorContent = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show($"yüklenirken bir hata oluştu. Durum Kodu: {response.StatusCode}\nMesaj: {errorContent}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            List<DrDTO> doktorlar = JsonConvert.DeserializeObject<List<DrDTO>>(jsonResponse);
-            return doktorlar;
-        }
 
         private async void simpleButton1_Click(object sender, EventArgs e)
         {

@@ -13,17 +13,15 @@ namespace UI
             panel2.Visible = false;
         }
 
-        private const string baseUrl = Program.BaseUrl;
-        private void label1_Click(object sender, EventArgs e)
-        {
-            // Bu metot boş bırakılabilir veya ihtiyaca göre doldurulabilir.
-        }
+        private static string baseUrl = Program.BaseUrl;
 
         private void Giris_Click(object sender, EventArgs e)
         {
-            XtraForm1 xtraForm1 = new XtraForm1();
-            this.Hide();
-            xtraForm1.ShowDialog();
+            using (XtraForm1 xtraForm1 = new XtraForm1())
+            {
+                this.Hide();
+                xtraForm1.ShowDialog();
+            }
         }
 
         // textEdit1_EditValueChanged metodunu async olarak işaretliyoruz.
