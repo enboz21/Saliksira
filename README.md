@@ -46,9 +46,25 @@ Web API'nin bir sunucuya kurulması gerekmektedir. **IIS (Internet Information S
 
 1. **Veritabanı Yedeği:** Proje klasöründe bulunan `Veritabanı` dizini içerisinde veritabanının yedeği (`.bak` dosyası) bulunmaktadır. Bu yedeği SQL Server'ınıza restore ederek veritabanını kurabilirsiniz.
 
-2. **Yayınlama:** Web API projesini Visual Studio üzerinden veya tercih ettiğiniz bir yöntemle IIS ya da başka bir web sunucusuna yayınlayın.
+2. **Veritabanı Bağlantı Ayarları:** Web API'nin veritabanına doğru şekilde bağlanabilmesi için `appsettings.json` dosyasını kendi sunucu ayarlarınıza göre düzenlemeniz gerekmektedir. Dosyanın içeriği aşağıdaki gibi olmalıdır, `ConnectionStrings` altındaki değerleri kendi SQL Server bilgilerinizle güncelleyin:
 
-3. **Çalıştırma:** Web API'nin sunucunuzda çalıştığından emin olun.
+```json
+{
+"ConnectionStrings": {
+"DefaultConnection": "Server=SUNUCU_ADINIZ;Database=VERITABANI_ADINIZ;TrustServerCertificate=True;User Id=KULLANICI_ADINIZ;Password=SIFRENIZ;"
+},
+"Logging": {
+"LogLevel": {
+"Default": "Information",
+"Microsoft.AspNetCore": "Warning"
+}
+},
+"AllowedHosts": "*"
+}
+```
+3. **Yayınlama:** Web API projesini Visual Studio üzerinden veya tercih ettiğiniz bir yöntemle IIS ya da başka bir web sunucusuna yayınlayın.
+
+4. **Çalıştırma:** Web API'nin sunucunuzda çalıştığından emin olun.
 
 ### 2. Kullanıcı Arayüzü Kurulumu
 
@@ -56,9 +72,9 @@ Kullanıcı arayüzünün Web API ile doğru şekilde iletişim kurabilmesi içi
 
 1. **`BaseUrl.txt` Dosyası:** Arayüz uygulamasının çalıştığı dizinde `BaseUrl.txt` adında bir dosya oluşturun.
 
-   * Bu dosyanın içine Web API'nizin IP adresi ve portunu yazın. Örneğin: `https://localhost:44352/api/`
+* Bu dosyanın içine Web API'nizin IP adresi ve portunu yazın. Örneğin: `https://localhost:44352/api/`
 
-   * Eğer dosya yoksa ve programı ilk kez çalıştırırsanız, program otomatik olarak varsayılan `https://localhost:44352/api/` değeriyle dosyayı oluşturacaktır. Ancak, Web API'yi sunucuya kurduysanız, uygulamanın doğru çalışması için bu dosyadaki URL'i kendi API adresinizle güncellemeniz gerekmektedir.
+* Eğer dosya yoksa ve programı ilk kez çalıştırırsanız, program otomatik olarak varsayılan `https://localhost:44352/api/` değeriyle dosyayı oluşturacaktır. Ancak, Web API'yi sunucuya kurduysanız, uygulamanın doğru çalışması için bu dosyadaki URL'i kendi API adresinizle güncellemeniz gerekmektedir.
 
 ## 💡 Kullanım
 
