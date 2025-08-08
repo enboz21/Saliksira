@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entity.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +10,7 @@ namespace UI.Core.Interface
     internal interface IUIOrSer
     {
         Task ADD(int PtID,int DrID);
+        Task<List<OrDTOE>> GetALL();
+        Task Delete(int OrID);
     }
 }

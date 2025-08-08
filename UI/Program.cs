@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Net.Http;
 using System.Windows.Forms; // MessageBox için eklendi
 
 namespace UI
@@ -7,7 +8,7 @@ namespace UI
     internal static class Program
     {
         public static string BaseUrl;
-
+        internal static HttpClient HTTP=new HttpClient();
         [STAThread]
         static void Main()
         {
@@ -30,7 +31,6 @@ namespace UI
             }
             catch (FileNotFoundException)
             {
-                // Dosya bulunamazsa oluþturulur ve içine varsayýlan deðer yazýlýr.
                 try
                 {
                     File.WriteAllText(dosyaAdi, varsayilanUrl);
@@ -40,17 +40,15 @@ namespace UI
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Dosya oluþturulurken bir hata oluþtu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; // Uygulamayý baþlatmadan çýk.
+                    return;
                 }
             }
             catch (Exception ex)
             {
-                // Diðer tüm hatalar yakalanýr.
                 MessageBox.Show($"Bir hata oluþtu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Uygulamayý baþlatmadan çýk.
+                return;
             }
 
-            // Dosya okuma veya oluþturma iþlemi baþarýlýysa uygulama baþlatýlýr.
             ApplicationConfiguration.Initialize();
             Application.Run(new StartForm());
         }

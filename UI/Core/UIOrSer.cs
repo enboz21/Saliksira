@@ -1,6 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using Entity.DTOs;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System.Net.Http;
-using System.Windows.Controls;
 using UI.Core.Interface;
 
 namespace UI.Core
@@ -30,6 +31,33 @@ namespace UI.Core
                 HttpContent content = new StringContent(DATA, System.Text.Encoding.UTF8, "application/json");
 
                 HttpResponseMessage respone = await _httpClient.PostAsync(apiUrl, content);
+            }
+        }
+
+        public async Task<List<OrDTOE>> GetALL()
+        {
+            HttpResponseMessage response = await _httpClient.GetAsync(BaseUrl);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                List<OrDTOE> Ran = JsonConvert.DeserializeObject<List<OrDTOE>>(jsonResponse);
+                return Ran;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public async Task Delete(int OrID)
+        {
+            string apiUrl = BaseUrl + "/" + OrID;
+            HttpResponseMessage response = await _httpClient.DeleteAsync(apiUrl);
+            if (!response.IsSuccessStatusCode) 
+            {
+                string errorContent = await response.Content.ReadAsStringAsync();
+                throw new HttpRequestException($"silinecek birşey bulunamadı : {response.StatusCode} - {errorContent}");
             }
         }
     }

@@ -140,7 +140,7 @@ namespace UI.Core
 
 
 
-                return X; // PtDTO'dan ismi alıyoruz.
+                return X;
             }
             return null;
         }

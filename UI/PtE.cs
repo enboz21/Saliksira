@@ -9,12 +9,11 @@ namespace UI
     {
         private int _id;
         private readonly IUIPtSer _uIPtSer;
-        private readonly HttpClient _httpClient;
+        private readonly HttpClient _httpClient = Program.HTTP;
         private readonly IUIGeSer _uIGeSer;
         private readonly IUIDrSer _uIDrSer;
         public PtE(int id)
         {
-            _httpClient = new HttpClient();
             _uIPtSer = new UIPtSer(_httpClient);
             _uIGeSer = new UIGeSer(_httpClient);
             _uIDrSer = new UIDrSer(_httpClient);

@@ -9,11 +9,10 @@ namespace UI
     {
         private int _id;
         private readonly IUIDrSer _uIDrSer;
-        private readonly HttpClient _httpClient;
+        private readonly HttpClient _httpClient = Program.HTTP;
         public DrE(int id)
         {
             InitializeComponent();
-            _httpClient = new HttpClient();
             _uIDrSer = new UIDrSer(_httpClient);
             _id = id;
         }

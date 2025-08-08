@@ -8,16 +8,15 @@ namespace UI
     public partial class DrC : DevExpress.XtraEditors.XtraForm
     {
         private readonly IUIDrSer _uIDrSer;
+        private readonly HttpClient _httpClient = Program.HTTP;
 
         public DrC()
         {
-            _uIDrSer = new UIDrSer(new HttpClient());
+            _uIDrSer = new UIDrSer(_httpClient);
             InitializeComponent();
         }
         private void Conf_Click(object sender, EventArgs e)
         {
-            using (HttpClient client = new HttpClient())
-            {
                 try
                 {
                     DrDTO DATA = new DrDTO
@@ -35,7 +34,7 @@ namespace UI
                     MessageBox.Show($"Doktor kaydetme işleminin bir yerinde hata: \n {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-            }
+            
 
         }
 

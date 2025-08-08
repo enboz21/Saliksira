@@ -9,10 +9,9 @@ namespace UI
     {
         private readonly IUIDrSer _uIDrSer;
         private readonly IUIPtSer _uIPtSer;
-        private readonly HttpClient _httpClient;
+        private readonly HttpClient _httpClient=Program.HTTP;
         public XtraForm1()
         {
-            var _httpClient = new HttpClient();
             _uIDrSer = new UIDrSer(_httpClient);
             _uIPtSer = new UIPtSer(_httpClient);
             InitializeComponent();

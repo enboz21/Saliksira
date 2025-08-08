@@ -8,14 +8,12 @@ namespace UI
 {
     public partial class PtC : DevExpress.XtraEditors.XtraForm
     {
-        private static string baseUrl = Program.BaseUrl;
         private readonly IUIPtSer _uIPtSer;
         private readonly IUIGeSer _uIGeSer;
         private readonly IUIDrSer _uIDrSer;
-        private readonly HttpClient _httpClient;
+        private readonly HttpClient _httpClient = Program.HTTP;
         public PtC()
         {
-            _httpClient = new HttpClient();
             _uIGeSer = new UIGeSer(_httpClient);
             _uIPtSer = new UIPtSer(_httpClient);
             _uIDrSer = new UIDrSer(_httpClient);

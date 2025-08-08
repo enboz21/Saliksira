@@ -9,10 +9,9 @@ namespace UI
     {
         private readonly IUIPtSer _uIPtSer;
         private readonly IUIOrSer _uIOrSer;
-        private readonly HttpClient _httpClient;
+        private readonly HttpClient _httpClient = Program.HTTP;
         public StartForm()
         {
-            _httpClient = new HttpClient();
             _uIPtSer = new UIPtSer(_httpClient);
             _uIOrSer = new UIOrSer(_httpClient);
             InitializeComponent();

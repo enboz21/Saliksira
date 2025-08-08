@@ -1,14 +1,18 @@
 ﻿using Entity.DTOs;
 using Newtonsoft.Json;
 using System.Net.Http;
+using UI.Core;
+using UI.Core.Interface;
 
 namespace UI
 {
     public partial class Takip : DevExpress.XtraEditors.XtraForm
     {
-        private static string baseUrl = Program.BaseUrl;
+        private readonly HttpClient _httpClient = Program.HTTP;
+        private readonly IUIOrSer _uIOrSer;
         public Takip()
         {
+            _uIOrSer = new UIOrSer(_httpClient);
             InitializeComponent();
         }
 
@@ -20,34 +24,30 @@ namespace UI
         private async void onay_Click(object sender, EventArgs e)
         {
             object selectedRow = gridView1.GetFocusedRowCellValue("Id");
-
-            string apiUrl = baseUrl + "Or/" + selectedRow;
-            using (HttpClient client = new HttpClient())
+            try
             {
-                HttpResponseMessage response = await client.DeleteAsync(apiUrl);
+                await _uIOrSer.Delete(Convert.ToInt32(selectedRow));
                 refle();
+            }
+            catch (Exception ex)
+            {
+                gridControl1.DataSource = null;
             }
         }
         public async void refle()
         {
-            string apiUrl = baseUrl + "Or";
-            using (HttpClient client = new HttpClient())
+            try
             {
-                HttpResponseMessage response = await client.GetAsync(apiUrl);
-
-                if (response.IsSuccessStatusCode)
+                var TEMP= await _uIOrSer.GetALL();
+                if (TEMP != null)
                 {
-                    string jsonResponse = await response.Content.ReadAsStringAsync();
-                    List<OrDTOE> doktorListesi = JsonConvert.DeserializeObject<List<OrDTOE>>(jsonResponse);
-                    gridControl1.DataSource = doktorListesi;
+                    gridControl1.DataSource = TEMP;
                 }
-                else
-                {
-                    gridControl1.DataSource = null;
-                    // API'den başarısız bir cevap gelirse hata mesajını göster
-                    string errorContent = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show($" hasta kalmadı", "Bildiri", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else gridControl1.DataSource = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Veri çekilirken hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
