@@ -72,5 +72,13 @@ namespace WebAPI.Controllers
             return Ok(R);
 
         }
+        [HttpGet("by-DR/{ID}")]
+        public async Task<IActionResult> GetByDrID(int ID)
+        {
+            var R=await _Or.GetByDrID(ID);
+            if(R == null)
+                return NotFound();
+            return Ok(R);
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace UI.Core.Interface
         Task ADD(int PtID,int DrID);
         Task<List<OrDTOE>> GetALL();
         Task Delete(int OrID);
+        Task<List<OrDTOE>> GetByDrID(int DrID);
     }
 }

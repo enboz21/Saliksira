@@ -9,7 +9,7 @@ namespace UI
     {
         private readonly IUIDrSer _uIDrSer;
         private readonly IUIPtSer _uIPtSer;
-        private readonly HttpClient _httpClient=Program.HTTP;
+        private readonly HttpClient _httpClient = Program.HTTP;
         public XtraForm1()
         {
             _uIDrSer = new UIDrSer(_httpClient);
@@ -110,7 +110,7 @@ namespace UI
 
         }
 
-        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void ta_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             using (Takip ta = new Takip())
             {
@@ -118,7 +118,7 @@ namespace UI
             }
         }
 
-        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void DRE_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             object selectedRow = gridView1.GetFocusedRowCellValue("Id");
             using (DrE drE = new DrE(Convert.ToInt32(selectedRow)))
@@ -128,7 +128,7 @@ namespace UI
 
         }
 
-        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void PtE_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             object selectedRow = gridView2.GetFocusedRowCellValue("Id");
             using (PtE ptE = new PtE(Convert.ToInt32(selectedRow)))
@@ -136,5 +136,6 @@ namespace UI
                 ptE.ShowDialog();
             }
         }
+
     }
 }

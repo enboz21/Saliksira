@@ -29,7 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraForm1));
-            splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
+            ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            LeftGridControl = new DevExpress.XtraGrid.GridControl();
+            gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            RightGridControl = new DevExpress.XtraGrid.GridControl();
+            gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -47,49 +53,82 @@
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            LeftGridControl = new DevExpress.XtraGrid.GridControl();
-            gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            RightGridControl = new DevExpress.XtraGrid.GridControl();
-            gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            ((System.ComponentModel.ISupportInitialize)splitContainerControl2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)splitContainerControl2.Panel1).BeginInit();
-            splitContainerControl2.Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)splitContainerControl2.Panel2).BeginInit();
-            splitContainerControl2.Panel2.SuspendLayout();
-            splitContainerControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)LeftGridControl).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)RightGridControl).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainerControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainerControl1.Panel1).BeginInit();
             splitContainerControl1.Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainerControl1.Panel2).BeginInit();
             splitContainerControl1.Panel2.SuspendLayout();
             splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)LeftGridControl).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)RightGridControl).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)gridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             SuspendLayout();
             // 
-            // splitContainerControl2
+            // ribbonPage2
             // 
-            splitContainerControl2.Dock = DockStyle.Fill;
-            splitContainerControl2.Horizontal = false;
-            splitContainerControl2.Location = new Point(0, 0);
-            splitContainerControl2.Name = "splitContainerControl2";
+            ribbonPage2.Name = "ribbonPage2";
+            ribbonPage2.Text = "ribbonPage2";
             // 
-            // splitContainerControl2.Panel1
+            // ribbonPageGroup4
             // 
-            splitContainerControl2.Panel1.Controls.Add(ribbonControl1);
-            splitContainerControl2.Panel1.Text = "Panel1";
+            ribbonPageGroup4.Name = "ribbonPageGroup4";
+            ribbonPageGroup4.Text = "ribbonPageGroup4";
             // 
-            // splitContainerControl2.Panel2
+            // LeftGridControl
             // 
-            splitContainerControl2.Panel2.Controls.Add(splitContainerControl1);
-            splitContainerControl2.Panel2.Text = "Panel2";
-            splitContainerControl2.Size = new Size(1199, 592);
-            splitContainerControl2.SplitterPosition = 319;
-            splitContainerControl2.TabIndex = 5;
+            LeftGridControl.Dock = DockStyle.Fill;
+            LeftGridControl.Location = new Point(0, 0);
+            LeftGridControl.MainView = gridView1;
+            LeftGridControl.Name = "LeftGridControl";
+            LeftGridControl.Size = new Size(667, 431);
+            LeftGridControl.TabIndex = 0;
+            LeftGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
+            // 
+            // gridView1
+            // 
+            gridView1.GridControl = LeftGridControl;
+            gridView1.Name = "gridView1";
+            gridView1.OptionsBehavior.Editable = false;
+            gridView1.OptionsEditForm.ActionOnModifiedRowChange = DevExpress.XtraGrid.Views.Grid.EditFormModifiedAction.Cancel;
+            gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // RightGridControl
+            // 
+            RightGridControl.Dock = DockStyle.Fill;
+            RightGridControl.Location = new Point(0, 0);
+            RightGridControl.MainView = gridView2;
+            RightGridControl.Name = "RightGridControl";
+            RightGridControl.Size = new Size(520, 431);
+            RightGridControl.TabIndex = 1;
+            RightGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView2 });
+            // 
+            // gridView2
+            // 
+            gridView2.GridControl = RightGridControl;
+            gridView2.Name = "gridView2";
+            gridView2.OptionsBehavior.Editable = false;
+            gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // splitContainerControl1
+            // 
+            splitContainerControl1.Dock = DockStyle.Fill;
+            splitContainerControl1.Location = new Point(0, 161);
+            splitContainerControl1.Name = "splitContainerControl1";
+            // 
+            // splitContainerControl1.Panel1
+            // 
+            splitContainerControl1.Panel1.Controls.Add(LeftGridControl);
+            splitContainerControl1.Panel1.Text = "Panel1";
+            // 
+            // splitContainerControl1.Panel2
+            // 
+            splitContainerControl1.Panel2.Controls.Add(RightGridControl);
+            splitContainerControl1.Panel2.Text = "Panel2";
+            splitContainerControl1.Size = new Size(1199, 431);
+            splitContainerControl1.SplitterPosition = 667;
+            splitContainerControl1.TabIndex = 7;
             // 
             // ribbonControl1
             // 
@@ -99,7 +138,8 @@
             ribbonControl1.MaxItemId = 13;
             ribbonControl1.Name = "ribbonControl1";
             ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1 });
-            ribbonControl1.Size = new Size(1199, 183);
+            ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.MacOffice;
+            ribbonControl1.Size = new Size(1199, 161);
             // 
             // barButtonItem1
             // 
@@ -183,7 +223,7 @@
             barButtonItem10.ImageOptions.Image = (Image)resources.GetObject("barButtonItem10.ImageOptions.Image");
             barButtonItem10.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem10.ImageOptions.LargeImage");
             barButtonItem10.Name = "barButtonItem10";
-            barButtonItem10.ItemClick += barButtonItem10_ItemClick;
+            barButtonItem10.ItemClick += ta_ItemClick;
             // 
             // barButtonItem11
             // 
@@ -193,7 +233,7 @@
             barButtonItem11.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem11.ImageOptions.LargeImage");
             barButtonItem11.Name = "barButtonItem11";
             barButtonItem11.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
-            barButtonItem11.ItemClick += barButtonItem11_ItemClick;
+            barButtonItem11.ItemClick += DRE_Click;
             // 
             // barButtonItem12
             // 
@@ -202,13 +242,12 @@
             barButtonItem12.ImageOptions.Image = (Image)resources.GetObject("barButtonItem12.ImageOptions.Image");
             barButtonItem12.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem12.ImageOptions.LargeImage");
             barButtonItem12.Name = "barButtonItem12";
-            barButtonItem12.ItemClick += barButtonItem12_ItemClick;
+            barButtonItem12.ItemClick += PtE_Click;
             // 
             // ribbonPage1
             // 
             ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup2, ribbonPageGroup3 });
             ribbonPage1.Name = "ribbonPage1";
-            ribbonPage1.Text = "ribbonPage1";
             // 
             // ribbonPageGroup1
             // 
@@ -232,60 +271,6 @@
             ribbonPageGroup3.ItemLinks.Add(barButtonItem10);
             ribbonPageGroup3.Name = "ribbonPageGroup3";
             // 
-            // splitContainerControl1
-            // 
-            splitContainerControl1.Dock = DockStyle.Fill;
-            splitContainerControl1.Location = new Point(0, 0);
-            splitContainerControl1.Name = "splitContainerControl1";
-            // 
-            // splitContainerControl1.Panel1
-            // 
-            splitContainerControl1.Panel1.Controls.Add(LeftGridControl);
-            splitContainerControl1.Panel1.Text = "Panel1";
-            // 
-            // splitContainerControl1.Panel2
-            // 
-            splitContainerControl1.Panel2.Controls.Add(RightGridControl);
-            splitContainerControl1.Panel2.Text = "Panel2";
-            splitContainerControl1.Size = new Size(1199, 261);
-            splitContainerControl1.SplitterPosition = 639;
-            splitContainerControl1.TabIndex = 5;
-            // 
-            // LeftGridControl
-            // 
-            LeftGridControl.Dock = DockStyle.Fill;
-            LeftGridControl.Location = new Point(0, 0);
-            LeftGridControl.MainView = gridView1;
-            LeftGridControl.Name = "LeftGridControl";
-            LeftGridControl.Size = new Size(639, 261);
-            LeftGridControl.TabIndex = 0;
-            LeftGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
-            // 
-            // gridView1
-            // 
-            gridView1.GridControl = LeftGridControl;
-            gridView1.Name = "gridView1";
-            gridView1.OptionsBehavior.Editable = false;
-            gridView1.OptionsEditForm.ActionOnModifiedRowChange = DevExpress.XtraGrid.Views.Grid.EditFormModifiedAction.Cancel;
-            gridView1.OptionsView.ShowGroupPanel = false;
-            // 
-            // RightGridControl
-            // 
-            RightGridControl.Dock = DockStyle.Fill;
-            RightGridControl.Location = new Point(0, 0);
-            RightGridControl.MainView = gridView2;
-            RightGridControl.Name = "RightGridControl";
-            RightGridControl.Size = new Size(548, 261);
-            RightGridControl.TabIndex = 1;
-            RightGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView2 });
-            // 
-            // gridView2
-            // 
-            gridView2.GridControl = RightGridControl;
-            gridView2.Name = "gridView2";
-            gridView2.OptionsBehavior.Editable = false;
-            gridView2.OptionsView.ShowGroupPanel = false;
-            // 
             // XtraForm1
             // 
             Appearance.BackColor = Color.Fuchsia;
@@ -294,49 +279,41 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(1199, 592);
-            Controls.Add(splitContainerControl2);
+            Controls.Add(splitContainerControl1);
+            Controls.Add(ribbonControl1);
             Name = "XtraForm1";
             Text = "XtraForm1";
             FormClosed += XtraForm1_FormClosed;
-            ((System.ComponentModel.ISupportInitialize)splitContainerControl2.Panel1).EndInit();
-            splitContainerControl2.Panel1.ResumeLayout(false);
-            splitContainerControl2.Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)splitContainerControl2.Panel2).EndInit();
-            splitContainerControl2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)splitContainerControl2).EndInit();
-            splitContainerControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)LeftGridControl).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)RightGridControl).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)splitContainerControl1.Panel1).EndInit();
             splitContainerControl1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainerControl1.Panel2).EndInit();
             splitContainerControl1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainerControl1).EndInit();
             splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)LeftGridControl).EndInit();
-            ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)RightGridControl).EndInit();
-            ((System.ComponentModel.ISupportInitialize)gridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraGrid.GridControl LeftGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.GridControl RightGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
@@ -344,5 +321,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
     }
 }

@@ -60,5 +60,23 @@ namespace UI.Core
                 throw new HttpRequestException($"silinecek birşey bulunamadı : {response.StatusCode} - {errorContent}");
             }
         }
+
+        public async Task<List<OrDTOE>> GetByDrID(int DrID)
+        {
+            //https://localhost:44352/api/Or/by-DR/
+            string apiUrl = BaseUrl + "/by-DR/" + DrID;
+            HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                List<OrDTOE> Ran = JsonConvert.DeserializeObject<List<OrDTOE>>(jsonResponse);
+                return Ran;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

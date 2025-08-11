@@ -29,6 +29,20 @@ namespace Business
             }).ToList();
         }
 
+        public async Task<List<OrDTOE>> GetByDrID(int drid)
+        {
+            var TEMP = await _dataSet.GetByDrID(drid);
+            return TEMP.Select(x => new OrDTOE
+            {
+                Id=x.Id,
+                HastaAdi = x.Hasta.Name,
+                HastaSoyadi =x.Hasta.Soyad,
+                DoktorAdi = x.Doktor.Name,
+                DoktorSoyadi=x.Doktor.Soyad,
+                RandevuDurumu= x.RandevuDurumuNavigation.Durum1
+            }).ToList();
+        }
+
         public async Task<OrEDTO> GetByHId(int ID)
         {
             var TEMP = await _dataSet.GetByHId(Convert.ToInt32(ID));

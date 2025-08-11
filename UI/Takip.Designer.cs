@@ -32,8 +32,10 @@
             gridControl1 = new DevExpress.XtraGrid.GridControl();
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             onay = new DevExpress.XtraEditors.SimpleButton();
+            dok = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dok.Properties).BeginInit();
             SuspendLayout();
             // 
             // gridControl1
@@ -53,13 +55,23 @@
             // onay
             // 
             onay.ImageOptions.Image = (Image)resources.GetObject("onay.ImageOptions.Image");
-            onay.Location = new Point(12, 38);
+            onay.Location = new Point(8, 40);
             onay.Name = "onay";
             onay.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             onay.Size = new Size(153, 80);
             onay.TabIndex = 1;
             onay.Text = "Tamamlandı";
             onay.Click += onay_Click;
+            // 
+            // dok
+            // 
+            dok.Location = new Point(8, 12);
+            dok.Name = "dok";
+            dok.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            dok.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            dok.Size = new Size(155, 22);
+            dok.TabIndex = 48;
+            dok.EditValueChanged += dok_EditValueChanged;
             // 
             // Takip
             // 
@@ -68,6 +80,7 @@
             AutoScaleDimensions = new SizeF(7F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(672, 712);
+            Controls.Add(dok);
             Controls.Add(onay);
             Controls.Add(gridControl1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -76,6 +89,7 @@
             Load += Takip_Load;
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dok.Properties).EndInit();
             ResumeLayout(false);
         }
 
@@ -84,5 +98,6 @@
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.SimpleButton onay;
+        private DevExpress.XtraEditors.LookUpEdit dok;
     }
 }

@@ -2,6 +2,7 @@
 using DataAccsess.Interface;
 using Entity;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
 
 namespace DataAccsess
 {
@@ -18,6 +19,16 @@ namespace DataAccsess
                     .Include("Doktor")
                     .Include("RandevuDurumuNavigation")
                     .ToListAsync();
+        }
+
+        public async Task<List<Randevular>> GetByDrID(int drid)
+        {
+            return await _context.Set<Randevular>()
+                .Where(e => EF.Property<int>(e, "DoktorId") == drid)
+                .Include("Hasta")
+                .Include("Doktor")
+                .Include("RandevuDurumuNavigation")
+                .ToListAsync();
         }
 
         public async Task<Randevular> GetByHId(int hId)

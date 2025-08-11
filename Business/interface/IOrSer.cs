@@ -10,6 +10,7 @@ namespace Business.@interface
         Task<List<OrDTOE>> GetAll();
         Task<List<OrDTO>> GetByName(String NAME);
         Task<OrEDTO> GetByHId(int ID);
+        Task<List<OrDTOE>> GetByDrID(int drid);
 
     }
 }

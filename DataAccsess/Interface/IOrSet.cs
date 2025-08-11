@@ -8,5 +8,6 @@ namespace DataAccsess.Interface
         Task<List<Randevular>> GetAll();
         Task<List<Randevular>> GetByName(string name);
         Task<Randevular> GetByHId(int hId);
+        Task<List<Randevular>> GetByDrID(int drid);
     }
 }
